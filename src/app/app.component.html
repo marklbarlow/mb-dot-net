@@ -1,0 +1,17 @@
+<md-toolbar color="primary">
+  <div>
+    <button md-button>HOME</button>
+    <button md-button>PHOTO 365</button>
+  </div>
+  <span class="navbar-spacer"></span>
+  <button md-button (click)="login()" color="accent" *ngIf="!(af.auth | async)">LOGIN</button>
+  <button md-button (click)="logout()" color="accent" *ngIf="(af.auth | async)">LOGOUT</button>
+</md-toolbar>
+
+<ul>
+  <li class="text" *ngFor="let item of items | async">
+    {{item.$value}}
+  </li>
+</ul>
+
+<div> {{ (af.auth | async)?.uid }} </div>
