@@ -1,0 +1,12 @@
+<mb-app-nav-bar></mb-app-nav-bar>
+<h1>Photo 365</h1>
+
+
+
+<ul>
+  <li class="text" *ngFor="let item of items | async">
+    {{item.$value}}
+  </li>
+</ul>
+
+<div> {{ (af.auth | async)?.uid }} </div>
