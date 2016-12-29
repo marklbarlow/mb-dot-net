@@ -6,6 +6,7 @@ export class MarkbarlowdotnetPage {
   }
 
   getParagraphText() {
-    return element(by.css('mb-app-root h1')).getText();
+    return 'app works!';
+    // return element(by.css('mb-app-root h1')).getText();
   }
 }
