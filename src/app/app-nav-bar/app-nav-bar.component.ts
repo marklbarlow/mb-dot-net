@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+// import { AngularFire } from 'angularfire2';
 
 @Component({
   selector: 'mb-app-nav-bar',
@@ -8,18 +8,17 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 })
 export class AppNavBarComponent implements OnInit {
 
-  constructor(public af: AngularFire) {
-  }
+  // constructor(public af: AngularFire) {
+  // }
 
-  login() {
-    this.af.auth.login();
-  }
+  // login() {
+  //   this.af.auth.login();
+  // }
 
-  logout() {
-    this.af.auth.logout();
-  }
+  // logout() {
+  //   this.af.auth.logout();
+  // }
 
   ngOnInit() {
   }
-
 }

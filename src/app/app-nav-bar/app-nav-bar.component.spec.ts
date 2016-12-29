@@ -1,8 +1,8 @@
-/* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { MaterialModule } from '@angular/material';
+import 'hammerjs';
 
+import { RouterLinkStubDirective } from '../../testing';
 import { AppNavBarComponent } from './app-nav-bar.component';
 
 describe('AppNavBarComponent', () => {
@@ -11,9 +11,13 @@ describe('AppNavBarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AppNavBarComponent ]
+      declarations: [
+        AppNavBarComponent,
+        RouterLinkStubDirective,
+      ],
+      imports: [MaterialModule.forRoot()]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -2,6 +2,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { MaterialModule } from '@angular/material';
+import 'hammerjs';
 
 import { Photo365Component } from './photo-365.component';
 
@@ -11,9 +13,10 @@ describe('Photo365Component', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Photo365Component ]
+      declarations: [Photo365Component],
+      imports: [MaterialModule.forRoot()],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
