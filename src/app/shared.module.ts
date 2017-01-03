@@ -4,12 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 @NgModule({
-    imports: [
+    exports: [
         BrowserModule,
         FormsModule,
         HttpModule,
     ],
-    exports: [
+    imports: [
         BrowserModule,
         FormsModule,
         HttpModule,

@@ -6,12 +6,17 @@ import { MaterialModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import 'hammerjs';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { routing } from './app.routing';
 
 import { AppComponent } from './app.component';
-import { AboutComponent } from './about/about.component';
-import { AppNavBarComponent } from './app-nav-bar/app-nav-bar.component';
-import { routing } from './app.routing';
-import { Photo365Component } from './photo-365/photo-365.component';
+import { AboutComponent } from './about';
+import { AppNavBarComponent } from './app-nav-bar';
+import { GalleryComponent, ReversePipe } from './gallery';
+import { ImageDialogComponent } from './image-dialog';
+import { Photo365Component } from './photo-365';
+
+import { ImagesService } from './services/images.service';
 
 // Must export the config
 export const firebaseConfig = {
@@ -28,11 +33,18 @@ const firebaseAuthConfig = {
 };
 
 @NgModule({
+  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
     AppNavBarComponent,
     AboutComponent,
-    Photo365Component
+    ImageDialogComponent,
+    GalleryComponent,
+    Photo365Component,
+    ReversePipe,
+  ],
+  entryComponents: [
+    ImageDialogComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
@@ -40,9 +52,11 @@ const firebaseAuthConfig = {
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routing),
-    MaterialModule.forRoot()
+    MaterialModule.forRoot(),
+    FlexLayoutModule.forRoot(),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    ImagesService,
+  ],
 })
 export class AppModule { }

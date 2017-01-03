@@ -1,0 +1,1 @@
+export { Photo365Component } from './photo-365.component';

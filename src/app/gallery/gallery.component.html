@@ -1,0 +1,7 @@
+<h4>{{ imageCollection.month }}</h4>
+
+<ul id="thumbnailsList">
+    <li *ngFor="let image of imageCollection.images | reverse">
+        <img src="{{ image.url }}" class="tn" width="191" height="146" data-toggle="modal" data-target="#selectedImageModal" (click)=setSelectedImage(image.url)>
+    </li>
+</ul>
