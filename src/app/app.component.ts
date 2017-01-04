@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 // import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'mb-app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']

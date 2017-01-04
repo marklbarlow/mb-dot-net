@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MdDialog } from '@angular/material';
 import { ImageDialogComponent } from '../image-dialog';
 import { ImagesService } from '../services/images.service';
+import { Image } from '../services/image.interface';
 import { ImageCollection } from '../services/image-collection.interface';
 
 @Component({
@@ -19,12 +20,12 @@ export class GalleryComponent implements OnInit {
         this.imageCollection = imagesService.getImages();
     }
 
-    setSelectedImage(imageUrl: string) {
+    setSelectedImage(image: Image) {
         let dialogRef = this.dialog.open(ImageDialogComponent);
-        dialogRef.componentInstance.imageUrl = imageUrl;
+        dialogRef.componentInstance.selectedImage = image;
 
         dialogRef.afterClosed().subscribe(result => {
-            //this.selectedOption = result;
+            // this.selectedOption = result;
         });
     }
 
