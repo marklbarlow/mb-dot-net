@@ -1,22 +1,21 @@
 <h4>{{ imageCollection.month }}</h4>
 
-<!--<ul id="thumbnailsList">
-    <li *ngFor="let image of imageCollection.images | reverse">-->
-
-<!--<img *ngIf="image.url" src="{{ image.url }}" class="tn" width="191" height="146" data-toggle="modal" data-target="#selectedImageModal"
+<ul id="thumbnailsList">
+    <li *ngFor="let image of imageCollection.images | reverse">
+        <img *ngIf="image.url" src="{{ image.url }}" class="tn" width="191" height="146"
             (click)=setSelectedImage(image)>
-        <span *ngIf="!image.url" width="191" height="146">
+        <!--<span *ngIf="!image.url" width="191" height="146">
             <md-icon>photo_camera</md-icon>
             Coming soon
         </span>-->
-<!--</li>
-</ul>-->
+    </li>
+</ul>
 
-<md-grid-list cols="3" rowHeight="200px" gutterSize="20px">
+<!--<md-grid-list cols="3" rowHeight="200px" gutterSize="20px">
     <md-grid-tile *ngFor="let image of imageCollection.images | reverse">
         <md-grid-tile-header>
             {{ image.dayOfMonth }} {{ imageCollection.month }} - {{ image.prompt }}
         </md-grid-tile-header>
         <img src="{{ image.url }}" (click)="setSelectedImage(image)">
     </md-grid-tile>
-</md-grid-list>
+</md-grid-list>-->
