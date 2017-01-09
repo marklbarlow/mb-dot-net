@@ -17,6 +17,7 @@ export class AboutComponent implements OnInit {
     { done: true, name: 'Angular 2', url: 'https://angular.io' },
     { done: true, name: 'Angular-CLI', url: 'https://cli.angular.io' },
     { done: true, name: 'Angular Material', url: 'https://material.angular.io' },
+    { done: true, name: 'Coveralls', url: 'https://coveralls.io/github/marklbarlow/mb-dot-net' },
     { done: false, name: 'Firebase', url: 'https://firebase.google.com' },
     { done: true, name: 'GitHub', url: 'https://github.com/marklbarlow/mb-dot-net' },
     { done: false, name: 'ngrx/store', url: 'https://github.com/ngrx/store' },
