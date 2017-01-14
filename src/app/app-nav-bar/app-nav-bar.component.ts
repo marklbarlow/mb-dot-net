@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 // import { AngularFire } from 'angularfire2';
 
 @Component({
-  selector: 'mb-app-nav-bar',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './app-nav-bar.component.html',
+  selector: 'mb-app-nav-bar',
   styleUrls: ['./app-nav-bar.component.scss']
 })
-export class AppNavBarComponent implements OnInit {
+export class AppNavBarComponent {
 
   // constructor(public af: AngularFire) {
   // }
@@ -18,7 +19,4 @@ export class AppNavBarComponent implements OnInit {
   // logout() {
   //   this.af.auth.logout();
   // }
-
-  ngOnInit() {
-  }
 }

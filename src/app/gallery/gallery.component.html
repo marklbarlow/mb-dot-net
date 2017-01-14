@@ -1,21 +1,19 @@
-<h4>{{ imageCollection.month }}</h4>
+<div *ngIf="imageCollection">
+    <h4>{{ imageCollection.month }}</h4>
 
-<!--<ul id="thumbnailsList">
-    <li *ngFor="let image of imageCollection.images | reverse">
-        <img *ngIf="image.url" src="{{ image.url }}" class="tn" width="191" height="146"
-            (click)=setSelectedImage(image)>-->
-        <!--<span *ngIf="!image.url" width="191" height="146">
-            <md-icon>photo_camera</md-icon>
-            Coming soon
-        </span>-->
-    <!--</li>
-</ul>-->
+    <ul id="thumbnailsList">
+        <li *ngFor="let image of imageCollection.images | ignoreHiddenImage | reverse" title="{{ image.prompt }}, {{ image.dayOfMonth }} {{ imageCollection.month }}">
+            <img *ngIf="image.url" [src]="image.url" class="tn" width="192" height="144" (click)=setSelectedImage(image)>
+            <img *ngIf="!image.url" [src]="comingSoonUrl" class="tn-disabled" width="192" height="144">
+        </li>
+    </ul>
 
-<md-grid-list cols="3" rowHeight="200px" gutterSize="20px">
-    <md-grid-tile *ngFor="let image of imageCollection.images | reverse">
+    <!--<md-grid-list cols="3" rowHeight="200px" gutterSize="20px">
+    <md-grid-tile *ngFor="let image of images | async">
         <md-grid-tile-header>
-            {{ image.dayOfMonth }} {{ imageCollection.month }} - {{ image.prompt }}
+            {{ image.dayOfMonth }} {{ month | async }} - {{ image.prompt }}
         </md-grid-tile-header>
         <img src="{{ image.url }}" (click)="setSelectedImage(image)">
     </md-grid-tile>
-</md-grid-list>
+</md-grid-list>-->
+</div>

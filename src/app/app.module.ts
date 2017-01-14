@@ -12,7 +12,7 @@ import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about';
 import { AppNavBarComponent } from './app-nav-bar';
-import { GalleryComponent, ReversePipe } from './gallery';
+import { GalleryComponent, IgnoreHiddenImagePipe, ReversePipe } from './gallery';
 import { ImageDialogComponent } from './image-dialog';
 import { Photo365Component } from './photo-365';
 
@@ -38,8 +38,9 @@ const firebaseAuthConfig = {
     AppComponent,
     AppNavBarComponent,
     AboutComponent,
-    ImageDialogComponent,
     GalleryComponent,
+    IgnoreHiddenImagePipe,
+    ImageDialogComponent,
     Photo365Component,
     ReversePipe,
   ],

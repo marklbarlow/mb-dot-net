@@ -1,6 +1,8 @@
 <h1>Photo 365</h1>
 
-<mb-gallery></mb-gallery>
+<div fxLayout="column">
+  <mb-gallery *ngFor="let gallery of imagesService.galleries | async" [imageCollection]="gallery"></mb-gallery>
+</div>
 
 <!--<ul>
   <li class="text" *ngFor="let item of items | async">

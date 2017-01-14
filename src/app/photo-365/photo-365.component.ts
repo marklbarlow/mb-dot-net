@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ImagesService } from '../services';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'mb-photo-365',
+  styleUrls: ['./photo-365.component.scss'],
   templateUrl: './photo-365.component.html',
-  styleUrls: ['./photo-365.component.scss']
 })
-export class Photo365Component implements OnInit {
-  ngOnInit() {
+export class Photo365Component {
+
+  constructor(public imagesService: ImagesService) {
   }
 }
