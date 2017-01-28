@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { TestBed, async } from '@angular/core/testing';
 import { SharedModule } from './shared.module';
 import { AppComponent } from './app.component';
-import { RouterOutletStubComponent } from '../testing';
+import { RouterOutletStubComponent, MdToolbarStubComponent } from '../testing';
 
 @Component({ selector: 'mb-app-nav-bar', template: '' })
 class NavBarStubComponent { }
@@ -13,6 +13,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
+        MdToolbarStubComponent,
         NavBarStubComponent,
         RouterOutletStubComponent
       ],
