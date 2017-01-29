@@ -7,16 +7,22 @@ import 'hammerjs';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { Photo365Component } from './photo-365.component';
-import { ImageCollection, ImagesService } from '../services';
+import { GalleryService, ImageMonth } from '../store';
+import { ImagesService } from '../services';
 import { MbGalleryStubComponent } from '../../testing';
 
 describe('Photo365Component', () => {
   let component: Photo365Component;
   let fixture: ComponentFixture<Photo365Component>;
+  let galleryServiceStub: any;
   let imagesServiceStub: any;
-  let subject = new BehaviorSubject<ImageCollection[]>([]);
+  let subject = new BehaviorSubject<ImageMonth[]>([]);
 
   beforeEach(async(() => {
+
+    galleryServiceStub = {
+
+    };
 
     imagesServiceStub = {
       galleries: subject.asObservable()
@@ -27,7 +33,10 @@ describe('Photo365Component', () => {
         MbGalleryStubComponent,
         Photo365Component],
       imports: [MaterialModule.forRoot()],
-      providers: [{ provide: ImagesService, useValue: imagesServiceStub }],
+      providers: [
+        { provide: GalleryService, useValue: galleryServiceStub },
+        { provide: ImagesService, useValue: imagesServiceStub }
+      ],
     })
       .compileComponents();
   }));

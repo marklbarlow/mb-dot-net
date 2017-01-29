@@ -1,0 +1,1 @@
+export { ManageGalleryComponent } from './manage-gallery.component';

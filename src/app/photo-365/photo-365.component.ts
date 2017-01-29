@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { GalleryService } from '../store';
 import { ImagesService } from '../services';
 
 @Component({
@@ -9,6 +10,8 @@ import { ImagesService } from '../services';
 })
 export class Photo365Component {
 
-  constructor(public imagesService: ImagesService) {
+  constructor(
+    public galleryService: GalleryService,
+    private imagesService: ImagesService) {
   }
 }

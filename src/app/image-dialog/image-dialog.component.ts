@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
-import { Image } from '../services/image.interface';
+import { Image } from '../store';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,

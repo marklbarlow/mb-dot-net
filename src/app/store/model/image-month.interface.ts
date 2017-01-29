@@ -1,6 +1,6 @@
 import { Image } from './image.interface';
 
-export interface ImageCollection {
+export interface ImageMonth {
     month: string;
     images: Image[];
 }
