@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Image } from '../services';
+import { Image } from '../../store';
 
 @Pipe({
     name: 'ignoreHiddenImage'

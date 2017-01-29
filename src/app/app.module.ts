@@ -11,14 +11,9 @@ import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import 'hammerjs';
 
 import { routing } from './app.routing';
-
 import { AppComponent } from './app.component';
-import { AboutComponent } from './about';
-import { AppNavBarComponent } from './app-nav-bar';
-import { GalleryComponent, IgnoreHiddenImagePipe, ReversePipe } from './gallery';
-import { ImageDialogComponent } from './image-dialog';
-import { ManageGalleryComponent } from './manage-gallery';
-import { Photo365Component } from './photo-365';
+import * as components from './components';
+import * as containers from './containers';
 
 import { ImagesService } from './services/images.service';
 import { reducer, GalleryService } from './store';
@@ -41,17 +36,19 @@ const firebaseAuthConfig = {
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-    AppNavBarComponent,
-    AboutComponent,
-    GalleryComponent,
-    IgnoreHiddenImagePipe,
-    ImageDialogComponent,
-    ManageGalleryComponent,
-    Photo365Component,
-    ReversePipe,
+    components.AddImageDialogComponent,
+    components.AppNavBarComponent,
+    components.GalleryComponent,
+    components.IgnoreHiddenImagePipe,
+    components.ImageDialogComponent,
+    components.ReversePipe,
+    containers.AboutComponent,
+    containers.ManageGalleryComponent,
+    containers.Photo365Component,
   ],
   entryComponents: [
-    ImageDialogComponent,
+    components.AddImageDialogComponent,
+    components.ImageDialogComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),

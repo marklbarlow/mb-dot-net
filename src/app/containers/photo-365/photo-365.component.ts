@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { GalleryService } from '../store';
-import { ImagesService } from '../services';
+import { GalleryService } from '../../store';
+import { ImagesService } from '../../services';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
