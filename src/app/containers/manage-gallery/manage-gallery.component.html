@@ -1,3 +1,13 @@
-<ngx-datatable>
-    
+<form>
+  <md-select placeholder="Month" [(ngModel)]="selectedValue" name="month">
+    <md-option *ngFor="let month of galleryService.images$ | async" [value]="month.month">
+      {{month.month}}
+    </md-option>
+  </md-select>
+
+  <p> Selected value: {{selectedValue}} </p>
+</form>
+
+<ngx-datatable class="material striped" [rows]="galleryService.images$ | async" [loadingIndicator]="loadingIndicator" [columns]="columns" [columnMode]="'force'"
+    [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'">
 </ngx-datatable>
