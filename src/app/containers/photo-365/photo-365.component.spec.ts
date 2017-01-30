@@ -8,7 +8,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { Photo365Component } from './photo-365.component';
 import { GalleryService, ImageMonth } from '../../store';
-import { ImagesService } from '../../services';
 import { MbGalleryStubComponent } from '../../../testing';
 
 describe('Photo365Component', () => {
@@ -24,10 +23,6 @@ describe('Photo365Component', () => {
 
     };
 
-    imagesServiceStub = {
-      galleries: subject.asObservable()
-    };
-
     TestBed.configureTestingModule({
       declarations: [
         MbGalleryStubComponent,
@@ -35,7 +30,6 @@ describe('Photo365Component', () => {
       imports: [MaterialModule.forRoot()],
       providers: [
         { provide: GalleryService, useValue: galleryServiceStub },
-        { provide: ImagesService, useValue: imagesServiceStub }
       ],
     })
       .compileComponents();

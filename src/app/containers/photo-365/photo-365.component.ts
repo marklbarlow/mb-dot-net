@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { GalleryService } from '../../store';
-import { ImagesService } from '../../services';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -10,8 +9,6 @@ import { ImagesService } from '../../services';
 })
 export class Photo365Component {
 
-  constructor(
-    public galleryService: GalleryService,
-    private imagesService: ImagesService) {
+  constructor(public galleryService: GalleryService) {
   }
 }

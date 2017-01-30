@@ -11,7 +11,7 @@ const initialState: State = {
 
 export function reducer(state = initialState, action: images.Actions): State {
     switch (action.type) {
-        case images.ActionTypes.UPDATE_ALL:
+        case images.ActionTypes.LOAD_SUCCESS:
             return {
                 months: action.payload,
             };

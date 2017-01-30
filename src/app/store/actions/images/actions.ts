@@ -1,4 +1,8 @@
-import { LoadAllAction } from './load-all.action';
+import { LoadAction } from './load.action';
+import { LoadFailAction } from './load-fail.action';
+import { LoadSuccessAction } from './load-success.action';
 
 export type Actions
-    = LoadAllAction;
+    = LoadAction
+    | LoadFailAction
+    | LoadSuccessAction;

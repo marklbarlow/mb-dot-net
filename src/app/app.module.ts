@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
@@ -14,8 +15,8 @@ import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import * as components from './components';
 import * as containers from './containers';
+import { GalleryEffects } from './effects/gallery.effects';
 
-import { ImagesService } from './services/images.service';
 import { reducer, GalleryService } from './store';
 
 // Must export the config
@@ -60,10 +61,10 @@ const firebaseAuthConfig = {
     NgxDatatableModule,
     RouterModule.forRoot(routing),
     StoreModule.provideStore(reducer),
+    EffectsModule.run(GalleryEffects),
   ],
   providers: [
     GalleryService,
-    ImagesService,
   ],
 })
 export class AppModule { }

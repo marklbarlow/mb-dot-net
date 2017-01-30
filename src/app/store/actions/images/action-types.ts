@@ -1,5 +1,7 @@
 import { type } from '../../util';
 
 export const ActionTypes = {
-    UPDATE_ALL: type('[Images] Load All'),
+    LOAD: type('[Images] Load'),
+    LOAD_SUCCESS: type('[Images] Load Success'),
+    LOAD_FAIL: type('[Images] Load Fail'),
 };

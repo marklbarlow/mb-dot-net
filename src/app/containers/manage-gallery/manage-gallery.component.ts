@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ImagesService } from '../../services';
 import { GalleryService } from '../../store';
 
 @Component({
@@ -17,8 +16,6 @@ export class ManageGalleryComponent {
         { prop: 'month' },
     ];
 
-    constructor(
-        private imagesService: ImagesService,
-        public galleryService: GalleryService) {
+    constructor(public galleryService: GalleryService) {
     }
 }
