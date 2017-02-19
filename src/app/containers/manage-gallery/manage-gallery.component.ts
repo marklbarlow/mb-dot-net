@@ -1,21 +1,36 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { GalleryService } from '../../store';
+import { MdDialog } from '@angular/material';
+import { Image, ImageMonth, GalleryService } from '../../store';
+import { AddImageDialogComponent } from '../../components';
 
 @Component({
-    //changeDetection: ChangeDetectionStrategy.OnPush,
+    // changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'mb-manage-gallery',
     templateUrl: './manage-gallery.component.html'
 })
 export class ManageGalleryComponent {
 
-    loadingIndicator = true;
+    public images: Image[] = [];
 
-    selectedValue: string;
+    constructor(
+        public galleryService: GalleryService,
+        public dialog: MdDialog) {
+        galleryService.selectedMonth$.filter(x => x !== undefined).subscribe(x => this.images = x.images);
+    }
 
-    columns = [
-        { prop: 'month' },
-    ];
+    public onMonthSelected(month: ImageMonth) {
+        this.galleryService.selectMonth(month);
+    }
 
-    constructor(public galleryService: GalleryService) {
+    public onImageAdded() {
+        const dialogRef = this.dialog.open(AddImageDialogComponent, {
+            disableClose: true,
+            height: '600px',
+            width: '800px',
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog result: ${result}`);
+        });
     }
 }

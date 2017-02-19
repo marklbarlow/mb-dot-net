@@ -1,0 +1,20 @@
+<h1 md-dialog-title>Add / Edit Image</h1>
+<md-dialog-content>
+    <form>
+        <div fxLayout="column">
+            <md-select name="day" placeholder="Day of Month" floatingPlaceholder="false" required [(ngModel)]="dayOfMonth">
+                <md-option *ngFor="let day of days" [value]="day">
+                    {{day}}
+                </md-option>
+            </md-select>
+            <md-input-container floatingPlaceholder="false">
+                <input mdInput placeholder="Prompt" required [(ngModel)]="prompt" name="prompt">
+            </md-input-container>
+            <md-checkbox [(ngModel)]="hidden" name="hidden">Hidden</md-checkbox>
+        </div>
+    </form>
+</md-dialog-content>
+<md-dialog-actions>
+    <button md-button>Save</button>
+    <button md-button md-dialog-close>Cancel</button>
+</md-dialog-actions>
