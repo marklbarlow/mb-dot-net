@@ -6,6 +6,7 @@ import { AddImageDialogComponent } from '../../components';
 @Component({
     // changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'mb-manage-gallery',
+    styleUrls: ['./manage-gallery.component.scss'],
     templateUrl: './manage-gallery.component.html'
 })
 export class ManageGalleryComponent {

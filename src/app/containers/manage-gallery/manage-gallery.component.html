@@ -12,6 +12,11 @@
 
   <ngx-datatable class="material striped" [rows]="images" [loadingIndicator]="galleryService.isLoading$ | async" [headerHeight]="40"
     [footerHeight]="0" [rowHeight]="'auto'">
+    <ngx-datatable-column name="Image" width='120'>
+      <template let-value="row" ngx-datatable-cell-template>
+        <img *ngIf="value.url" [src]="value.url" height="50" width="50">
+      </template>
+    </ngx-datatable-column>
     <ngx-datatable-column name="Day of Month" width='120'>
       <template let-value="row" ngx-datatable-cell-template>
         <span>{{value.dayOfMonth}}</span>
@@ -29,12 +34,12 @@
     </ngx-datatable-column>
     <ngx-datatable-column name="" width='50'>
       <template let-value="row" ngx-datatable-cell-template>
-        <button md-icon-button><md-icon>mode_edit</md-icon></button>
+        <button md-icon-button><md-icon class="action-button">mode_edit</md-icon></button>
       </template>
     </ngx-datatable-column>
     <ngx-datatable-column name="" width='50'>
       <template let-value="row" ngx-datatable-cell-template>
-        <button md-icon-button><md-icon>delete</md-icon></button>
+        <button md-icon-button><md-icon class="action-button">delete</md-icon></button>
       </template>
     </ngx-datatable-column>
     </ngx-datatable>
