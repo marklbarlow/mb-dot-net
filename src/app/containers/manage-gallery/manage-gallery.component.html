@@ -1,5 +1,6 @@
-<div fxLayout="column">
+<h1>Manage Gallery</h1>
 
+<div fxLayout="column">
   <form>
     <md-select name="month" [ngModel]="(galleryService.selectedMonth$ | async)?.month">
       <md-option *ngFor="let month of galleryService.images$ | async" [value]="month.month" (click)="onMonthSelected(month)">
