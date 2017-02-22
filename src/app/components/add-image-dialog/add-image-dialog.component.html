@@ -1,20 +1,38 @@
-<h1 md-dialog-title>Add / Edit Image</h1>
-<md-dialog-content>
-    <form>
-        <div fxLayout="column">
-            <md-select name="day" placeholder="Day of Month" floatingPlaceholder="false" required [(ngModel)]="dayOfMonth">
-                <md-option *ngFor="let day of days" [value]="day">
-                    {{day}}
-                </md-option>
-            </md-select>
-            <md-input-container floatingPlaceholder="false">
-                <input mdInput placeholder="Prompt" required [(ngModel)]="prompt" name="prompt">
-            </md-input-container>
-            <md-checkbox [(ngModel)]="hidden" name="hidden">Hidden</md-checkbox>
+<h2>Add / Edit Image</h2>
+<md-dialog-content [style.height]="'240px'">
+    <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px">
+        <form>
+            <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="10px">
+                <md-select name="day" placeholder="Day of Month" floatPlaceholder="never" required [(ngModel)]="dayOfMonth">
+                    <md-option *ngFor="let day of days" [value]="day">
+                        {{day}}
+                    </md-option>
+                </md-select>
+                <md-input-container floatPlaceholder="auto">
+                    <input mdInput placeholder="Prompt" required [(ngModel)]="prompt" name="prompt">
+                </md-input-container>
+                <md-checkbox [(ngModel)]="hidden" name="hidden">Hidden</md-checkbox>
+            </div>
+        </form>
+
+        <div>
+            <input type="file" multiple (change)="fileChange(input)" #input />
+
+            <div *ngFor="let file_src of file_srcs; let i = index">
+                <md-card>
+                    <img md-card-image [attr.src]='file_src' alt="" />
+                    <!--<md-card-content>
+                        <p>{{ debug_size_before[i] }} bytes <b>Before</b> </p>
+                        <p>{{ debug_size_after[i] }} bytes <b>After</b></p>
+                    </md-card-content>-->
+                </md-card>
+            </div>
         </div>
-    </form>
+    </div>
 </md-dialog-content>
-<md-dialog-actions>
-    <button md-button>Save</button>
-    <button md-button md-dialog-close>Cancel</button>
+<md-dialog-actions [attr.align]="'end'">
+    <div>
+        <button md-button md-dialog-close>CANCEL</button>
+        <button md-button (click)="onSave()" color="primary">SAVE</button>
+    </div>
 </md-dialog-actions>

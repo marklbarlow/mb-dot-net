@@ -24,14 +24,36 @@ export class ManageGalleryComponent {
     }
 
     public onImageAdded() {
+        this.openEditDialog();
+    }
+
+    public onEditImage(image: Image) {
+        this.openEditDialog(image);
+    }
+
+    public onDeleteImage(image: Image) {
+        console.log('Delete image:', image);
+    }
+
+    private openEditDialog(image: Image = undefined) {
         const dialogRef = this.dialog.open(AddImageDialogComponent, {
             disableClose: true,
-            height: '600px',
-            width: '800px',
+            height: '400px',
+            width: '600px',
         });
 
+        if (image !== undefined) {
+            dialogRef.componentInstance.dayOfMonth = image.dayOfMonth;
+            dialogRef.componentInstance.hidden = image.hidden;
+            dialogRef.componentInstance.prompt = image.prompt;
+        }
+
         dialogRef.afterClosed().subscribe(result => {
-            console.log(`Dialog result: ${result}`);
+            if (result) {
+                console.log(dialogRef.componentInstance.dayOfMonth);
+                console.log(dialogRef.componentInstance.hidden);
+                console.log(dialogRef.componentInstance.prompt);
+            }
         });
     }
 }

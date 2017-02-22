@@ -57,7 +57,7 @@ const firebaseAuthConfig = {
     FlexLayoutModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     NgxDatatableModule,
     RouterModule.forRoot(routing),
     StoreModule.provideStore(reducer),

@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import * as fromRoot from '../reducers';
 import * as galleryActions from '../actions';
-import { ImageMonth } from '../model';
+import { Image, ImageMonth } from '../model';
 
 @Injectable()
 export class GalleryService {
@@ -24,5 +24,13 @@ export class GalleryService {
 
     public selectMonth(imageMonth: ImageMonth): void {
         this.store.dispatch(new galleryActions.SelectMonthAction(imageMonth));
+    }
+
+    public saveImage(image: Image) {
+        this.store.dispatch(new galleryActions.SaveImageAction(image));
+    }
+
+    public deleteImage() {
+        // this.store.dispatch(new galleryActions.)
     }
 }

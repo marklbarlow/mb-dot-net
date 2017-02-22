@@ -1,10 +1,12 @@
-<mb-app-nav-bar></mb-app-nav-bar>
-<div class="main-content">
-    <router-outlet></router-outlet>
-</div>
+<div fxLayout="column" class="site">
+    <mb-app-nav-bar></mb-app-nav-bar>
+    <div class="main-content" fxFlex>
+        <router-outlet></router-outlet>
+    </div>
 
-<footer id="footer" class="footer">
-    <md-toolbar color="primary">
-        <span class="copyright-text">All images copyright ©2017 Mark Barlow</span>
-    </md-toolbar>
-</footer>
+    <footer id="footer" class="footer">
+        <md-toolbar color="primary">
+            <span class="copyright-text">All images copyright ©2017 Mark Barlow</span>
+        </md-toolbar>
+    </footer>
+</div>

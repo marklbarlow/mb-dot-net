@@ -58,6 +58,20 @@ export class SaveImageAction implements Action {
     }
 }
 
+export class SaveImageSuccessAction implements Action {
+    type = ActionTypes.SAVE_IMAGE_SUCCESS;
+
+    constructor(public payload: Image) {
+    }
+}
+
+export class SaveImageFailAction implements Action {
+    type = ActionTypes.SAVE_IMAGE_FAIL;
+
+    constructor(public payload: string) {
+    }
+}
+
 export type Actions
     = LoadAction
     | LoadFailAction
@@ -65,5 +79,7 @@ export type Actions
     | AddImageAction
     | EditImageAction
     | SaveImageAction
+    | SaveImageFailAction
+    | SaveImageSuccessAction
     | SelectImageAction
     | SelectMonthAction;

@@ -1,15 +1,16 @@
 <h1>Manage Gallery</h1>
 
-<div fxLayout="column">
+<div fxLayout="column" fxLayoutGap="10px">
   <form>
-    <md-select name="month" [ngModel]="(galleryService.selectedMonth$ | async)?.month">
-      <md-option *ngFor="let month of galleryService.images$ | async" [value]="month.month" (click)="onMonthSelected(month)">
-        {{month.month}}
-      </md-option>
-    </md-select>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+      <md-select name="month" [ngModel]="(galleryService.selectedMonth$ | async)?.month">
+        <md-option *ngFor="let month of galleryService.images$ | async" [value]="month.month" (click)="onMonthSelected(month)">
+          {{month.month}}
+        </md-option>
+      </md-select>
+      <button md-button (click)="onImageAdded()" color="primary">ADD IMAGE</button>
+    </div>
   </form>
-
-  <button md-button (click)="onImageAdded()" color="primary">Add Image</button>
 
   <ngx-datatable class="material striped" [rows]="images" [loadingIndicator]="galleryService.isLoading$ | async" [headerHeight]="40"
     [footerHeight]="0" [rowHeight]="'auto'">
@@ -20,27 +21,27 @@
     </ngx-datatable-column>
     <ngx-datatable-column name="Day of Month" width='120'>
       <template let-value="row" ngx-datatable-cell-template>
-        <span>{{value.dayOfMonth}}</span>
+        <span>{{ value.dayOfMonth }}</span>
       </template>
     </ngx-datatable-column>
-    <ngx-datatable-column name="Hidden" width='80'>
+    <ngx-datatable-column name="Visible" width='80'>
       <template let-value="row" ngx-datatable-cell-template>
-        <md-checkbox [checked]="value.hidden"></md-checkbox>
+        <md-icon [style.color]="value.hidden ? 'red' : 'green'">{{ value.hidden ? 'close' : 'done' }}</md-icon>
       </template>
     </ngx-datatable-column>
-    <ngx-datatable-column name="Prompt">
+    <ngx-datatable-column name="Prompt" width="150">
       <template let-value="row" ngx-datatable-cell-template>
-        <span>{{value.prompt}}</span>
-      </template>
-    </ngx-datatable-column>
-    <ngx-datatable-column name="" width='50'>
-      <template let-value="row" ngx-datatable-cell-template>
-        <button md-icon-button><md-icon class="action-button">mode_edit</md-icon></button>
+        <span>{{ value.prompt }}</span>
       </template>
     </ngx-datatable-column>
     <ngx-datatable-column name="" width='50'>
       <template let-value="row" ngx-datatable-cell-template>
-        <button md-icon-button><md-icon class="action-button">delete</md-icon></button>
+        <button md-icon-button (click)="onEditImage(value)"><md-icon class="action-button">mode_edit</md-icon></button>
+      </template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="" width='50'>
+      <template let-value="row" ngx-datatable-cell-template>
+        <button md-icon-button (click)="onDeleteImage(value)"><md-icon class="action-button">delete</md-icon></button>
       </template>
     </ngx-datatable-column>
     </ngx-datatable>

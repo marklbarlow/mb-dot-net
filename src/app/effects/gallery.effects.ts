@@ -29,6 +29,17 @@ export class GalleryEffects {
                 .catch(error => Observable.of(new gallery.LoadFailAction(error)));
         });
 
+    @Effect()
+    saveImage$: Observable<Action> = this.actions$
+        .ofType(gallery.ActionTypes.SAVE_IMAGE)
+        .switchMap(() => {
+
+            // this.af.database.list()
+
+
+            return Observable.of(new gallery.SaveImageSuccessAction(undefined));
+        });
+
     constructor(private actions$: Actions, public af: AngularFire) {
     }
 }
