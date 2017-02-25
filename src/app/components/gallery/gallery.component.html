@@ -2,18 +2,27 @@
     <h4>{{ imageCollection.month }}</h4>
 
     <ul id="thumbnailsList">
-        <li *ngFor="let image of imageCollection.images | ignoreHiddenImage | reverse" title="{{ image.prompt }}, {{ image.dayOfMonth }} {{ imageCollection.month }}">
-            <img *ngIf="image.url" [src]="image.url" class="tn" width="192" height="144" (click)=setSelectedImage(image)>
+        <li *ngFor="let image of imageCollection.images | ignoreHiddenImage | reverse; let i=index" title="{{ image.prompt }}, {{ image.dayOfMonth }} {{ imageCollection.month }}">
+            <img *ngIf="image.url" [src]="image.url" class="tn" width="192" height="144" (click)=setSelectedImage(i)>
             <img *ngIf="!image.url" [src]="comingSoonUrl" class="tn-disabled" width="192" height="144">
         </li>
     </ul>
 
-    <!--<md-grid-list cols="3" rowHeight="200px" gutterSize="20px">
-    <md-grid-tile *ngFor="let image of images | async">
-        <md-grid-tile-header>
-            {{ image.dayOfMonth }} {{ month | async }} - {{ image.prompt }}
-        </md-grid-tile-header>
-        <img src="{{ image.url }}" (click)="setSelectedImage(image)">
-    </md-grid-tile>
-</md-grid-list>-->
+    <div class="ng-overlay" *ngIf="opened">
+        <div class="ng-gallery-content">
+            <md-progress-spinner mode="indeterminate" *ngIf="loading" class="loading"></md-progress-spinner>
+            <a class="close-popup" (click)="closeGallery()">
+                <md-icon>close</md-icon>
+            </a>
+            <a class="nav-left" *ngIf="hasPrevious()" (click)="prevImage()">
+                <md-icon>keyboard_arrow_left</md-icon>
+            </a>
+            <img *ngIf="!loading && getImageUrl()" [src]="getImageUrl()" (click)="nextImage()" class="effect" />
+            <img *ngIf="!loading && !getImageUrl()" [src]="comingSoonUrl" (click)="nextImage()" class="effect" />
+            <a class="nav-right" *ngIf="hasNext()" (click)="nextImage()">
+                <md-icon>keyboard_arrow_right</md-icon>
+            </a>
+            <span class="info-text">{{ getInfoText() }}</span>
+        </div>
+    </div>
 </div>

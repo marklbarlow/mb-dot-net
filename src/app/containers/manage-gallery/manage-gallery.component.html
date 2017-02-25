@@ -34,12 +34,12 @@
         <span>{{ value.prompt }}</span>
       </template>
     </ngx-datatable-column>
-    <ngx-datatable-column name="" width='50'>
+    <ngx-datatable-column name="" width='100'>
       <template let-value="row" ngx-datatable-cell-template>
         <button md-icon-button (click)="onEditImage(value)"><md-icon class="action-button">mode_edit</md-icon></button>
       </template>
     </ngx-datatable-column>
-    <ngx-datatable-column name="" width='50'>
+    <ngx-datatable-column name="" width='100'>
       <template let-value="row" ngx-datatable-cell-template>
         <button md-icon-button (click)="onDeleteImage(value)"><md-icon class="action-button">delete</md-icon></button>
       </template>
