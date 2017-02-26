@@ -31,14 +31,14 @@ export class AddImageDialogComponent {
 
     readFiles(files, index = 0) {
         // Create the file reader
-        let reader = new FileReader();
+        const reader = new FileReader();
 
         // If there is a file
         if (index in files) {
             // Start reading this file
             this.readFile(files[index], reader, (result) => {
                 // Create an img element and add the image file data to it
-                let img = document.createElement('img');
+                const img = document.createElement('img');
                 img.src = result;
 
                 // Send this img to the resize function (and wait for callback)
@@ -92,18 +92,18 @@ export class AddImageDialogComponent {
             }
 
             // create a canvas object
-            let canvas = document.createElement('canvas');
+            const canvas = document.createElement('canvas');
 
             // Set the canvas to the new calculated dimensions
             canvas.width = width;
             canvas.height = height;
-            let ctx = canvas.getContext('2d');
+            const ctx = canvas.getContext('2d');
 
             ctx.drawImage(img, 0, 0, width, height);
 
             // Get this encoded as a jpeg
             // IMPORTANT: 'jpeg' NOT 'jpg'
-            let dataUrl = canvas.toDataURL('image/jpeg');
+            const dataUrl = canvas.toDataURL('image/jpeg');
 
             // callback with the results
             callback(dataUrl, img.src.length, dataUrl.length);
