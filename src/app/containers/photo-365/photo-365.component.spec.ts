@@ -7,29 +7,29 @@ import 'hammerjs';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { Photo365Component } from './photo-365.component';
-import { GalleryService, ImageMonth } from '../../store';
-import { MbGalleryStubComponent } from '../../../testing';
+import { GalleryService, ImageMonth, OverlayService } from '../../store';
+import { MbGalleryStubComponent, MbImageOverlayComponent } from '../../../testing';
 
 describe('Photo365Component', () => {
   let component: Photo365Component;
   let fixture: ComponentFixture<Photo365Component>;
   let galleryServiceStub: any;
-  let imagesServiceStub: any;
-  let subject = new BehaviorSubject<ImageMonth[]>([]);
+  let overlayServiceStub: any;
 
   beforeEach(async(() => {
 
-    galleryServiceStub = {
-
-    };
+    galleryServiceStub = {};
+    overlayServiceStub = {};
 
     TestBed.configureTestingModule({
       declarations: [
         MbGalleryStubComponent,
+        MbImageOverlayComponent,
         Photo365Component],
-      imports: [MaterialModule.forRoot()],
+      imports: [MaterialModule],
       providers: [
         { provide: GalleryService, useValue: galleryServiceStub },
+        { provide: OverlayService, useValue: overlayServiceStub },
       ],
     })
       .compileComponents();

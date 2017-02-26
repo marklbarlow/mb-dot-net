@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import * as fromRoot from '../reducers';
-import * as galleryActions from '../actions';
+import * as overlay from '../actions/overlay';
 import { ImageMonth } from '../model';
 
 @Injectable()
@@ -23,18 +23,18 @@ export class OverlayService {
     }
 
     public close(): void {
-        this.store.dispatch(new galleryActions.OverlayCloseAction());
+        this.store.dispatch(new overlay.OverlayCloseAction());
     }
 
     public next(): void {
-        this.store.dispatch(new galleryActions.OverlayNextAction());
+        this.store.dispatch(new overlay.OverlayNextAction());
     }
 
     public open(imageMonth: ImageMonth, index: number): void {
-        this.store.dispatch(new galleryActions.OverlayOpenAction({ imageMonth: imageMonth, index: index }));
+        this.store.dispatch(new overlay.OverlayOpenAction({ imageMonth: imageMonth, index: index }));
     }
 
     public previous(): void {
-        this.store.dispatch(new galleryActions.OverlayPreviousAction());
+        this.store.dispatch(new overlay.OverlayPreviousAction());
     }
 }
