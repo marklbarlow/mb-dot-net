@@ -1,0 +1,1 @@
+export { ImageOverlayComponent } from './image-overlay.component';

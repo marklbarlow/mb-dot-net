@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MdDialog } from '@angular/material';
-import { ImageDialogComponent } from '../image-dialog';
 import { Image, ImageMonth } from '../../store';
 
 @Component({
@@ -27,7 +26,9 @@ export class GalleryComponent {
     }
 
     public getImageUrl(): string {
-        return this.getImage().url;
+        const image = this.getImage();
+
+        return image.url ? image.url : this.comingSoonUrl;
     }
 
     public getInfoText(): string {

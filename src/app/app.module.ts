@@ -28,7 +28,7 @@ import { reducer, GalleryService } from './store';
     components.AppNavBarComponent,
     components.GalleryComponent,
     components.IgnoreHiddenImagePipe,
-    components.ImageDialogComponent,
+    components.ImageOverlayComponent,
     components.ReversePipe,
     containers.AboutComponent,
     containers.ManageGalleryComponent,
@@ -36,7 +36,6 @@ import { reducer, GalleryService } from './store';
   ],
   entryComponents: [
     components.AddImageDialogComponent,
-    components.ImageDialogComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase, environment.firebaseAuth),
