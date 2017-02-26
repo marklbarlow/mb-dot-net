@@ -1,13 +1,9 @@
 <h1>Photo 365</h1>
 
 <div fxLayout="column">
-  <mb-gallery *ngFor="let gallery of galleryService.images$ | async" [imageCollection]="gallery"></mb-gallery>
+  <mb-gallery *ngFor="let gallery of galleryService.images$ | async" [imageCollection]="gallery" (imageSelected)="onImageSelected(gallery, $event)"></mb-gallery>
 </div>
 
-<!--<ul>
-  <li class="text" *ngFor="let item of items | async">
-    {{item.$value}}
-  </li>
-</ul>
-
-<div> {{ (af.auth | async)?.uid }} </div>-->
+<mb-image-overlay *ngIf="overlayService.isOpen$ | async" (showPrevious)="prevImage()" (showNext)="nextImage()" (close)="closeGallery()"
+  [hasPrevious]="overlayService.hasPrevious$ | async" [hasNext]="overlayService.hasNext$ | async" [imageText]="overlayService.imageText$ | async"
+  [imageUrl]="overlayService.imageUrl$ | async"></mb-image-overlay>

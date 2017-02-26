@@ -7,7 +7,4 @@
             <img *ngIf="!image.url" [src]="comingSoonUrl" class="tn-disabled" width="192" height="144">
         </li>
     </ul>
-
-    <mb-image-overlay *ngIf="opened" (showPrevious)="prevImage()" (showNext)="nextImage()" (close)="closeGallery()" [hasPrevious]="hasPrevious()"
-        [hasNext]="hasNext()" [imageText]="getInfoText()" [imageUrl]="getImageUrl()"></mb-image-overlay>
 </div>

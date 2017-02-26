@@ -18,7 +18,7 @@ import * as components from './components';
 import * as containers from './containers';
 import { GalleryEffects } from './effects/gallery.effects';
 
-import { reducer, GalleryService } from './store';
+import { reducer, GalleryService, OverlayService } from './store';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -51,6 +51,7 @@ import { reducer, GalleryService } from './store';
   ],
   providers: [
     GalleryService,
+    OverlayService,
   ],
 })
 export class AppModule { }

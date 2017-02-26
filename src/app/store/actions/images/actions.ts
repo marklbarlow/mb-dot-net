@@ -73,11 +73,11 @@ export class SaveImageFailAction implements Action {
 }
 
 export type Actions
-    = LoadAction
+    = AddImageAction
+    | EditImageAction
+    | LoadAction
     | LoadFailAction
     | LoadSuccessAction
-    | AddImageAction
-    | EditImageAction
     | SaveImageAction
     | SaveImageFailAction
     | SaveImageSuccessAction
