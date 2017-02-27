@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-// import { AngularFire } from 'angularfire2';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

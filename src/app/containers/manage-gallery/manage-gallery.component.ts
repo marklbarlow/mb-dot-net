@@ -50,9 +50,20 @@ export class ManageGalleryComponent {
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
-                console.log(dialogRef.componentInstance.dayOfMonth);
-                console.log(dialogRef.componentInstance.hidden);
-                console.log(dialogRef.componentInstance.prompt);
+                if (image === undefined) {
+                    image = {
+                        dayOfMonth: undefined,
+                        hidden: false,
+                        prompt: undefined,
+                        url: undefined,
+                    };
+                }
+
+                image.dayOfMonth = dialogRef.componentInstance.dayOfMonth;
+                image.hidden = dialogRef.componentInstance.hidden;
+                image.prompt = dialogRef.componentInstance.prompt;
+
+                this.galleryService.saveImage(image, dialogRef.componentInstance.full_srcs[0], dialogRef.componentInstance.file_srcs[0]);
             }
         });
     }

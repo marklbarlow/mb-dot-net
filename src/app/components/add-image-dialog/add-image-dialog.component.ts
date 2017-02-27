@@ -1,5 +1,10 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
+import { AngularFireService } from '../../effects/angularfire.service';
+import { Image } from '../../store';
+
+declare var FileReader: any;
+declare var document: any;
 
 @Component({
     // changeDetection: ChangeDetectionStrategy.OnPush,
@@ -20,6 +25,7 @@ export class AddImageDialogComponent {
 
     public debug_size_before: any[] = [];
     public debug_size_after: any[] = [];
+    public full_srcs: any[] = [];
     public file_srcs: any[] = [];
 
     constructor(private dialogRef: MdDialogRef<AddImageDialogComponent>) {
@@ -40,6 +46,7 @@ export class AddImageDialogComponent {
                 // Create an img element and add the image file data to it
                 const img = document.createElement('img');
                 img.src = result;
+                this.full_srcs.push(result);
 
                 // Send this img to the resize function (and wait for callback)
                 this.resize(img, 250, 250, (resized_jpeg, before, after) => {
@@ -54,6 +61,8 @@ export class AddImageDialogComponent {
 
                     // Read the next file;
                     this.readFiles(files, index + 1);
+
+
                 });
             });
         } else {
@@ -111,6 +120,15 @@ export class AddImageDialogComponent {
     }
 
     public onSave(): void {
+
+        const image: Image = {
+            dayOfMonth: this.dayOfMonth,
+            hidden: this.hidden,
+            prompt: this.prompt,
+            url: undefined
+        };
+
+        // this.angularFireService.saveImage(image, this.full_srcs[0], this.file_srcs[0]);
         this.dialogRef.close(true);
     }
 }

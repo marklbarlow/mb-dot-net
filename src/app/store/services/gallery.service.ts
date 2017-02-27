@@ -26,8 +26,8 @@ export class GalleryService {
         this.store.dispatch(new galleryActions.SelectMonthAction(imageMonth));
     }
 
-    public saveImage(image: Image) {
-        this.store.dispatch(new galleryActions.SaveImageAction(image));
+    public saveImage(image: Image, fullImage: any, thumbnailImage: any) {
+        this.store.dispatch(new galleryActions.SaveImageAction(image, fullImage, thumbnailImage));
     }
 
     public deleteImage() {

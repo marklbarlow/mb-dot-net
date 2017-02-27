@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-// import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -8,9 +7,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  // items: FirebaseListObservable<any[]>;
-
-  // constructor(public af: AngularFire) {
-  //   this.items = af.database.list('/items');
-  // }
 }
