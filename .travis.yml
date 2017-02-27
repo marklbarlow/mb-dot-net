@@ -19,4 +19,4 @@ before_install:
  - sudo dpkg -i google-chrome*.deb
 
 after_success:
- - cat ./coverage/coverage.lcov | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+ - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
