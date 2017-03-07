@@ -1,6 +1,7 @@
 import * as overlay from '../actions/overlay';
 import { ImageMonth } from '../model';
 
+declare var require;
 const objectAssign = require('object-assign');
 const comingSoonUrl = 'https://firebasestorage.googleapis.com/v0/b/website-a49d3.appspot.com/o/photo365%2Fcoming-soon.jpg?alt=media&token=efa0efa4-4e6d-4bf1-b183-3404e0042707';
 
