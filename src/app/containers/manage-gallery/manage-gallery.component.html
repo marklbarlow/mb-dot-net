@@ -9,8 +9,8 @@
         </md-option>
       </md-select>
       <button md-button (click)="onMonthAdded()" color="primary">ADD MONTH</button>
-      <button md-button (click)="onMonthDeleted()" color="primary">DELETE MONTH</button>
-      <button md-button (click)="onImageAdded()" color="primary">ADD IMAGE</button>
+      <button md-button (click)="onMonthDeleted()" color="primary" [disabled]="!(galleryService.selectedMonth$ | async)">DELETE MONTH</button>
+      <button md-button (click)="onImageAdded()" color="primary" [disabled]="!(galleryService.selectedMonth$ | async)">ADD IMAGE</button>
     </div>
   </form>
 
@@ -46,5 +46,5 @@
         <button md-icon-button (click)="onDeleteImage(value)"><md-icon class="action-button">delete</md-icon></button>
       </template>
     </ngx-datatable-column>
-    </ngx-datatable>
+  </ngx-datatable>
 </div>
