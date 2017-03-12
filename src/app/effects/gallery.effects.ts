@@ -5,7 +5,6 @@ import { Observable } from 'rxjs/Observable';
 import * as gallery from '../store/actions/images';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/groupby';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/reduce';
 import 'rxjs/add/operator/startWith';
