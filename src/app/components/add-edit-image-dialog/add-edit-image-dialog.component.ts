@@ -8,10 +8,10 @@ declare var document: any;
 
 @Component({
     // changeDetection: ChangeDetectionStrategy.OnPush,
-    selector: 'mb-add-image-dialog',
-    templateUrl: './add-image-dialog.component.html'
+    selector: 'mb-add-edit-image-dialog',
+    templateUrl: './add-edit-image-dialog.component.html'
 })
-export class AddImageDialogComponent {
+export class AddEditImageDialogComponent {
     @Input() public dayOfMonth: number;
     @Input() public prompt: string;
     @Input() public hidden = false;
@@ -23,7 +23,7 @@ export class AddImageDialogComponent {
     public thumbnailImage: any;
 
     constructor(
-        private dialogRef: MdDialogRef<AddImageDialogComponent>,
+        private dialogRef: MdDialogRef<AddEditImageDialogComponent>,
         private changeDetectorRef: ChangeDetectorRef) {
     }
 

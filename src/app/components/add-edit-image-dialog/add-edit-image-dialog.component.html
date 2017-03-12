@@ -17,8 +17,8 @@
 
         <div>
             <input type="file" multiple (change)="fileChange(input)" #input />
-            <md-card>
-                <img md-card-image [attr.src]="fullImage" alt="" *ngIf="fullImage"/>
+            <md-card *ngIf="fullImage">
+                <img md-card-image [attr.src]="fullImage" />
             </md-card>
         </div>
     </div>

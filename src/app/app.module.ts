@@ -26,7 +26,7 @@ import { AngularFireService } from './angularfire.service';
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-    components.AddImageDialogComponent,
+    components.AddEditImageDialogComponent,
     components.AddEditMonthDialogComponent,
     components.AppNavBarComponent,
     components.GalleryComponent,
@@ -39,7 +39,7 @@ import { AngularFireService } from './angularfire.service';
     containers.Photo365Component,
   ],
   entryComponents: [
-    components.AddImageDialogComponent,
+    components.AddEditImageDialogComponent,
     components.AddEditMonthDialogComponent,
   ],
   imports: [

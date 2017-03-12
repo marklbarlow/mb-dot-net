@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MdDialog } from '@angular/material';
 import { Image, GalleryService, Month } from '../../store';
-import { AddImageDialogComponent, AddEditMonthDialogComponent } from '../../components';
+import { AddEditImageDialogComponent, AddEditMonthDialogComponent } from '../../components';
 
 
 @Component({
@@ -70,7 +70,7 @@ export class ManageGalleryComponent {
     }
 
     private openEditImageDialog(image: Image = undefined) {
-        const dialogRef = this.dialog.open(AddImageDialogComponent, {
+        const dialogRef = this.dialog.open(AddEditImageDialogComponent, {
             disableClose: true,
             height: '400px',
             width: '600px',
