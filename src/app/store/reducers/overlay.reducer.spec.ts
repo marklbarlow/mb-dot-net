@@ -12,7 +12,7 @@ describe('Overlay Reducer', () => {
     it('when next image is selected, index increases by 1', () => {
         const nextAction = new actions.OverlayNextAction();
         const initialState: overlay.State = {
-            imageMonth: undefined,
+            imageMonth: { month: 'Test', images: [undefined, undefined] },
             isOpen: true,
             selectedIndex: 0,
         };
