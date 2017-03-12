@@ -9,21 +9,22 @@
         </md-option>
       </md-select>
       <button md-button (click)="onMonthAdded()" color="primary">ADD MONTH</button>
+      <button md-button (click)="onMonthEdited()" color="primary" [disabled]="!(galleryService.selectedMonth$ | async)">EDIT MONTH</button>
       <button md-button (click)="onMonthDeleted()" color="primary" [disabled]="!(galleryService.selectedMonth$ | async)">DELETE MONTH</button>
       <button md-button (click)="onImageAdded()" color="primary" [disabled]="!(galleryService.selectedMonth$ | async)">ADD IMAGE</button>
     </div>
   </form>
 
-  <ngx-datatable class="material striped" [rows]="images" [loadingIndicator]="galleryService.isLoading$ | async" [headerHeight]="40"
+  <ngx-datatable class="material striped" [rows]="galleryService.imagesForSelectedMonth$ | async" [loadingIndicator]="galleryService.isLoading$ | async" [headerHeight]="40"
     [footerHeight]="0" [rowHeight]="'auto'">
     <ngx-datatable-column name="Image" width='120'>
       <template let-value="row" ngx-datatable-cell-template>
-        <img *ngIf="value.url" [src]="value.url" height="50" width="50">
+        <img *ngIf="value.thumbnailUrl" [src]="value.thumbnailUrl" height="50" width="50">
       </template>
     </ngx-datatable-column>
     <ngx-datatable-column name="Day of Month" width='120'>
       <template let-value="row" ngx-datatable-cell-template>
-        <span>{{ value.dayOfMonth }}</span>
+        <span>{{ value.dayOfMonth | dayOfMonth }}</span>
       </template>
     </ngx-datatable-column>
     <ngx-datatable-column name="Visible" width='80'>

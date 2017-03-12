@@ -14,6 +14,10 @@ export const ActionTypes = {
     SELECT_IMAGE: type('[Images] Select Image'),
     SELECT_MONTH: type('[Images] Select Month'),
 
+    DELETE_IMAGE: type('[Images] Delete Image'),
+    DELETE_IMAGE_SUCCESS: type('[Images] Delete Image Success'),
+    DELETE_IMAGE_FAIL: type('[Images] Delete Image Fail'),
+
     LOAD_MONTH_LIST: type('[Images] Load Month List'),
     LOAD_MONTH_LIST_SUCCESS: type('[Images] Load Month List Success'),
     ADD_MONTH: type('[Images] Add Month'),
@@ -97,7 +101,7 @@ export class SaveImageFailAction implements Action {
 export class AddMonthAction implements Action {
     type = ActionTypes.ADD_MONTH;
 
-    constructor(public payload: string) {
+    constructor(public payload: { month: string, numberOfDays: number }) {
     }
 }
 
@@ -125,6 +129,21 @@ export class DeleteMonthSuccessAction implements Action {
 
 export class DeleteMonthFailAction implements Action {
     type = ActionTypes.DELETE_MONTH_FAIL;
+}
+
+export class DeleteImageAction implements Action {
+    type = ActionTypes.DELETE_IMAGE;
+
+    constructor(public payload: { month: Month, image: Image }) {
+    }
+}
+
+export class DeleteImageSuccessAction implements Action {
+    type = ActionTypes.DELETE_IMAGE_SUCCESS;
+}
+
+export class DeleteImageFailAction implements Action {
+    type = ActionTypes.DELETE_IMAGE_FAIL;
 }
 
 export class LoadMonthListAction implements Action {
@@ -155,5 +174,8 @@ export type Actions
     | DeleteMonthAction
     | DeleteMonthFailAction
     | DeleteMonthSuccessAction
+    | DeleteImageAction
+    | DeleteImageFailAction
+    | DeleteImageSuccessAction
     | LoadMonthListAction
     | LoadMonthListSuccessAction;

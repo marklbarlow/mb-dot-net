@@ -3,8 +3,8 @@
 
     <ul id="thumbnailsList">
         <li *ngFor="let image of imageCollection.images | ignoreHiddenImage | reverse; let i=index" title="{{ image.prompt }}, {{ image.dayOfMonth }} {{ imageCollection.month }}">
-            <img *ngIf="image.url" [src]="image.url" class="tn" width="192" height="144" (click)=setSelectedImage(i)>
-            <img *ngIf="!image.url" [src]="comingSoonUrl" class="tn-disabled" width="192" height="144">
+            <img *ngIf="image.thumbnailUrl" [src]="image.thumbnailUrl" class="tn" width="192" height="144" (click)=setSelectedImage(i)>
+            <img *ngIf="!image.thumbnailUrl" [src]="comingSoonUrl" class="tn-disabled" width="192" height="144">
         </li>
     </ul>
 </div>

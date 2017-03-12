@@ -5,7 +5,7 @@
             <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="10px">
                 <md-select name="day" placeholder="Day of Month" floatPlaceholder="never" required [(ngModel)]="dayOfMonth">
                     <md-option *ngFor="let day of days" [value]="day">
-                        {{day}}
+                        {{day | dayOfMonth }}
                     </md-option>
                 </md-select>
                 <md-input-container floatPlaceholder="auto">
@@ -17,16 +17,9 @@
 
         <div>
             <input type="file" multiple (change)="fileChange(input)" #input />
-
-            <div *ngFor="let file_src of file_srcs; let i = index">
-                <md-card>
-                    <img md-card-image [attr.src]='file_src' alt="" />
-                    <!--<md-card-content>
-                        <p>{{ debug_size_before[i] }} bytes <b>Before</b> </p>
-                        <p>{{ debug_size_after[i] }} bytes <b>After</b></p>
-                    </md-card-content>-->
-                </md-card>
-            </div>
+            <md-card>
+                <img md-card-image [attr.src]="fullImage" alt="" *ngIf="fullImage"/>
+            </md-card>
         </div>
     </div>
 </md-dialog-content>

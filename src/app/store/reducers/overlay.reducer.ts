@@ -1,5 +1,6 @@
 import * as overlay from '../actions/overlay';
 import { ImageMonth } from '../model';
+import * as utils from '../../utils';
 
 declare var require;
 const objectAssign = require('object-assign');
@@ -26,6 +27,10 @@ export function reducer(state = initialState, action: overlay.Actions): State {
             });
 
         case overlay.ActionTypes.OVERLAY_NEXT:
+            if (!getHasNext(state)) {
+                return state;
+            }
+
             return objectAssign({}, state, {
                 selectedIndex: state.selectedIndex + 1,
             });
@@ -51,10 +56,10 @@ export const getHasNext = (state: State) => state.selectedIndex < state.imageMon
 export const getHasPrevious = (state: State) => state.selectedIndex > 0;
 export const getImageText = (state: State) => {
     const image = state.imageMonth.images[state.selectedIndex];
-    return `${image.prompt} - ${image.dayOfMonth} ${state.imageMonth.month}`;
+    return `${image.prompt} - ${utils.convertNumberToDayOfMonth(image.dayOfMonth)} ${state.imageMonth.month}`;
 };
 export const getImageUrl = (state: State) => {
     const image = state.imageMonth.images[state.selectedIndex];
-    return image.url ? image.url : comingSoonUrl;
+    return image.imageUrl ? image.imageUrl : comingSoonUrl;
 };
 export const getIsOpen = (state: State) => state.isOpen;

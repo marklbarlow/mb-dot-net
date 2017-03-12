@@ -27,6 +27,7 @@ import { AngularFireService } from './angularfire.service';
   declarations: [
     AppComponent,
     components.AddImageDialogComponent,
+    components.AddEditMonthDialogComponent,
     components.AppNavBarComponent,
     components.GalleryComponent,
     components.IgnoreHiddenImagePipe,
@@ -39,6 +40,7 @@ import { AngularFireService } from './angularfire.service';
   ],
   entryComponents: [
     components.AddImageDialogComponent,
+    components.AddEditMonthDialogComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase, environment.firebaseAuth),

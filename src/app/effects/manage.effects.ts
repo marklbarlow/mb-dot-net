@@ -24,7 +24,7 @@ export class ManageEffects {
     addMonth$: Observable<Action> = this.actions$
         .ofType(gallery.ActionTypes.ADD_MONTH)
         .map((action: gallery.AddMonthAction) => {
-            this.afs.addMonth(action.payload);
+            this.afs.addMonth(action.payload.month, action.payload.numberOfDays);
 
             return new gallery.AddMonthSuccessAction();
         });
@@ -45,6 +45,14 @@ export class ManageEffects {
 
             return this.afs.saveImage(action.payload.month, action.payload.image, action.payload.fullImage, action.payload.thumbnailImage)
                 .map(() => new gallery.SaveImageSuccessAction(undefined));
+        });
+
+    @Effect()
+    deleteImage$: Observable<Action> = this.actions$
+        .ofType(gallery.ActionTypes.DELETE_IMAGE)
+        .switchMap((action: gallery.DeleteImageAction) => {
+            this.afs.deleteImage(action.payload.month, action.payload.image);
+            return Observable.of(new gallery.DeleteImageSuccessAction());
         });
 
     constructor(private actions$: Actions, private afs: AngularFireService) {
