@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { AngularFireService } from '../../angularfire.service';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -8,14 +9,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class AppNavBarComponent {
 
-  // constructor(public af: AngularFire) {
-  // }
-
-  // login() {
-  //   this.af.auth.login();
-  // }
-
-  // logout() {
-  //   this.af.auth.logout();
-  // }
+  constructor(public af: AngularFireService) {
+  }
 }

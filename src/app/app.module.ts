@@ -17,8 +17,10 @@ import { AppComponent } from './app.component';
 import * as components from './components';
 import * as containers from './containers';
 import { GalleryEffects } from './effects/gallery.effects';
+import { ManageEffects } from './effects/manage.effects';
 
 import { reducer, GalleryService, OverlayService } from './store';
+import { AngularFireService } from './angularfire.service';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -29,6 +31,7 @@ import { reducer, GalleryService, OverlayService } from './store';
     components.GalleryComponent,
     components.IgnoreHiddenImagePipe,
     components.ImageOverlayComponent,
+    components.DayOfMonthPipe,
     components.ReversePipe,
     containers.AboutComponent,
     containers.ManageGalleryComponent,
@@ -48,8 +51,10 @@ import { reducer, GalleryService, OverlayService } from './store';
     RouterModule.forRoot(routing),
     StoreModule.provideStore(reducer),
     EffectsModule.run(GalleryEffects),
+    EffectsModule.run(ManageEffects),
   ],
   providers: [
+    AngularFireService,
     GalleryService,
     OverlayService,
   ],

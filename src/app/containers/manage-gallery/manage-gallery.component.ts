@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MdDialog } from '@angular/material';
-import { Image, ImageMonth, GalleryService } from '../../store';
+import { Image, GalleryService, Month } from '../../store';
 import { AddImageDialogComponent } from '../../components';
 
 @Component({
@@ -12,19 +12,31 @@ import { AddImageDialogComponent } from '../../components';
 export class ManageGalleryComponent {
 
     public images: Image[] = [];
+    private month: Month;
 
     constructor(
         public galleryService: GalleryService,
         public dialog: MdDialog) {
-        galleryService.selectedMonth$.filter(x => x !== undefined).subscribe(x => this.images = x.images);
+        galleryService.selectedMonth$.filter(x => x !== undefined).subscribe(x => {
+            // this.images = x.images ? x.images.map(y => y.$value) : [];
+            this.month = x;
+        });
     }
 
-    public onMonthSelected(month: ImageMonth) {
+    public onMonthSelected(month: Month) {
         this.galleryService.selectMonth(month);
     }
 
     public onImageAdded() {
         this.openEditDialog();
+    }
+
+    public onMonthAdded() {
+        this.galleryService.addMonth('Month1');
+    }
+
+    public onMonthDeleted() {
+        this.galleryService.deleteMonth(this.month);
     }
 
     public onEditImage(image: Image) {
@@ -55,7 +67,8 @@ export class ManageGalleryComponent {
                         dayOfMonth: undefined,
                         hidden: false,
                         prompt: undefined,
-                        url: undefined,
+                        imageUrl: undefined,
+                        thumbnailUrl: undefined,
                     };
                 }
 
@@ -63,7 +76,11 @@ export class ManageGalleryComponent {
                 image.hidden = dialogRef.componentInstance.hidden;
                 image.prompt = dialogRef.componentInstance.prompt;
 
-                this.galleryService.saveImage(image, dialogRef.componentInstance.full_srcs[0], dialogRef.componentInstance.file_srcs[0]);
+                this.galleryService.saveImage(
+                    this.month,
+                    image,
+                    dialogRef.componentInstance.full_srcs[0],
+                    dialogRef.componentInstance.file_srcs[0]);
             }
         });
     }

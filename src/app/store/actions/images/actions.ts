@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Image, ImageMonth } from '../../model';
+import { Image, ImageMonth, Month } from '../../model';
 import { type } from '../../util';
 
 export const ActionTypes = {
@@ -13,6 +13,15 @@ export const ActionTypes = {
     SAVE_IMAGE_FAIL: type('[Images] Save Image Fail'),
     SELECT_IMAGE: type('[Images] Select Image'),
     SELECT_MONTH: type('[Images] Select Month'),
+
+    LOAD_MONTH_LIST: type('[Images] Load Month List'),
+    LOAD_MONTH_LIST_SUCCESS: type('[Images] Load Month List Success'),
+    ADD_MONTH: type('[Images] Add Month'),
+    ADD_MONTH_SUCCESS: type('[Images] Add Month Success'),
+    ADD_MONTH_FAIL: type('[Images] Add Month Fail'),
+    DELETE_MONTH: type('[Images] Delete Month'),
+    DELETE_MONTH_SUCCESS: type('[Images] Delete Month Success'),
+    DELETE_MONTH_FAIL: type('[Images] Delete Month Fail')
 };
 
 export class LoadAction implements Action {
@@ -39,7 +48,7 @@ export class LoadSuccessAction implements Action {
 export class SelectMonthAction implements Action {
     type = ActionTypes.SELECT_MONTH;
 
-    constructor(public payload: ImageMonth) {
+    constructor(public payload: Month) {
     }
 }
 
@@ -67,7 +76,7 @@ export class EditImageAction implements Action {
 export class SaveImageAction implements Action {
     type = ActionTypes.SAVE_IMAGE;
 
-    constructor(public image: Image, public fullImage: any, public thumbnailImage: any) {
+    constructor(public payload: { month: Month, image: Image, fullImage: any, thumbnailImage: any }) {
     }
 }
 
@@ -85,6 +94,50 @@ export class SaveImageFailAction implements Action {
     }
 }
 
+export class AddMonthAction implements Action {
+    type = ActionTypes.ADD_MONTH;
+
+    constructor(public payload: string) {
+    }
+}
+
+export class AddMonthSuccessAction implements Action {
+    type = ActionTypes.ADD_MONTH_SUCCESS;
+}
+
+export class AddMonthFailAction implements Action {
+    type = ActionTypes.ADD_MONTH_FAIL;
+
+    constructor(public payload: string) {
+    }
+}
+
+export class DeleteMonthAction implements Action {
+    type = ActionTypes.DELETE_MONTH;
+
+    constructor(public payload: Month) {
+    }
+}
+
+export class DeleteMonthSuccessAction implements Action {
+    type = ActionTypes.DELETE_MONTH_SUCCESS;
+}
+
+export class DeleteMonthFailAction implements Action {
+    type = ActionTypes.DELETE_MONTH_FAIL;
+}
+
+export class LoadMonthListAction implements Action {
+    type = ActionTypes.LOAD_MONTH_LIST;
+}
+
+export class LoadMonthListSuccessAction implements Action {
+    type = ActionTypes.LOAD_MONTH_LIST_SUCCESS;
+
+    constructor(public payload: Month[]) {
+    }
+}
+
 export type Actions
     = AddImageAction
     | EditImageAction
@@ -95,4 +148,12 @@ export type Actions
     | SaveImageFailAction
     | SaveImageSuccessAction
     | SelectImageAction
-    | SelectMonthAction;
+    | SelectMonthAction
+    | AddMonthAction
+    | AddMonthFailAction
+    | AddMonthSuccessAction
+    | DeleteMonthAction
+    | DeleteMonthFailAction
+    | DeleteMonthSuccessAction
+    | LoadMonthListAction
+    | LoadMonthListSuccessAction;

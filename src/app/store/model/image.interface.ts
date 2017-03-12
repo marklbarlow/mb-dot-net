@@ -1,6 +1,8 @@
 export interface Image {
+    $key?: string;
     dayOfMonth: string;
     hidden: boolean;
     prompt: string;
-    url: string;
+    imageUrl: string;
+    thumbnailUrl: string;
 }

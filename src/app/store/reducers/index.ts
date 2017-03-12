@@ -30,6 +30,7 @@ export function reducer(state: any, action: any) {
 
 export const getGalleryState = (state: State) => state.gallery;
 export const getImages = createSelector(getGalleryState, fromImages.getImages);
+export const getMonths = createSelector(getGalleryState, fromImages.getMonths);
 export const getSelectedImage = createSelector(getGalleryState, fromImages.getSelectedImage);
 export const getSelectedMonth = createSelector(getGalleryState, fromImages.getSelectedMonth);
 export const getIsLoading = createSelector(getGalleryState, fromImages.getIsLoading);

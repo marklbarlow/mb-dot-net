@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
-import { AngularFireService } from '../../effects/angularfire.service';
+import { AngularFireService } from '../../angularfire.service';
 import { Image } from '../../store';
 
 declare var FileReader: any;
@@ -125,7 +125,8 @@ export class AddImageDialogComponent {
             dayOfMonth: this.dayOfMonth,
             hidden: this.hidden,
             prompt: this.prompt,
-            url: undefined
+            imageUrl: undefined,
+            thumbnailUrl: undefined
         };
 
         // this.angularFireService.saveImage(image, this.full_srcs[0], this.file_srcs[0]);

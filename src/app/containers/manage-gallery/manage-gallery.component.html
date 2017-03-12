@@ -3,11 +3,13 @@
 <div fxLayout="column" fxLayoutGap="10px">
   <form>
     <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-      <md-select name="month" [ngModel]="(galleryService.selectedMonth$ | async)?.month">
-        <md-option *ngFor="let month of galleryService.images$ | async" [value]="month.month" (click)="onMonthSelected(month)">
-          {{month.month}}
+      <md-select name="month" [ngModel]="(galleryService.selectedMonth$ | async)?.name">
+        <md-option *ngFor="let month of galleryService.months$ | async" [value]="month.name" (click)="onMonthSelected(month)">
+          {{month.name}}
         </md-option>
       </md-select>
+      <button md-button (click)="onMonthAdded()" color="primary">ADD MONTH</button>
+      <button md-button (click)="onMonthDeleted()" color="primary">DELETE MONTH</button>
       <button md-button (click)="onImageAdded()" color="primary">ADD IMAGE</button>
     </div>
   </form>

@@ -3,34 +3,44 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import * as fromRoot from '../reducers';
 import * as galleryActions from '../actions/images';
-import { Image, ImageMonth } from '../model';
+import { Image, ImageMonth, Month } from '../model';
 
 @Injectable()
 export class GalleryService {
 
     public images$: Observable<ImageMonth[]>;
+    public months$: Observable<Month[]>;
     public isLoading$: Observable<boolean>;
-    public selectedMonth$: Observable<ImageMonth>;
+    public selectedMonth$: Observable<Month>;
 
     constructor(private store: Store<fromRoot.State>) {
         this.images$ = store.select(fromRoot.getImages);
         this.isLoading$ = store.select(fromRoot.getIsLoading);
+        this.months$ = store.select(fromRoot.getMonths);
         this.selectedMonth$ = store.select(fromRoot.getSelectedMonth);
     }
 
-    public updateImages(images: ImageMonth[]): void {
-        this.store.dispatch(new galleryActions.LoadSuccessAction(images));
+    public selectMonth(month: Month): void {
+        this.store.dispatch(new galleryActions.SelectMonthAction(month));
     }
 
-    public selectMonth(imageMonth: ImageMonth): void {
-        this.store.dispatch(new galleryActions.SelectMonthAction(imageMonth));
+    public addMonth(month: string): void {
+        this.store.dispatch(new galleryActions.AddMonthAction(month));
     }
 
-    public saveImage(image: Image, fullImage: any, thumbnailImage: any) {
-        this.store.dispatch(new galleryActions.SaveImageAction(image, fullImage, thumbnailImage));
+    public deleteMonth(month: Month): void {
+        this.store.dispatch(new galleryActions.DeleteMonthAction(month));
+    }
+
+    public saveImage(month: Month, image: Image, fullImage: any, thumbnailImage: any) {
+        this.store.dispatch(new galleryActions.SaveImageAction({
+            month: month,
+            image: image,
+            fullImage: fullImage,
+            thumbnailImage: thumbnailImage
+        }));
     }
 
     public deleteImage() {
-        // this.store.dispatch(new galleryActions.)
     }
 }

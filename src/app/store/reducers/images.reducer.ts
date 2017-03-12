@@ -1,5 +1,5 @@
 import * as images from '../actions/images';
-import { Image, ImageMonth } from '../model';
+import { Image, ImageMonth, Month } from '../model';
 
 declare var require;
 const objectAssign = require('object-assign');
@@ -10,8 +10,9 @@ export interface State {
     loaded: boolean;
     loading: boolean;
     months: ImageMonth[];
+    monthsList: Month[];
     selectedImage: Image;
-    selectedMonth: ImageMonth;
+    selectedMonth: Month;
 }
 
 const initialState: State = {
@@ -20,6 +21,7 @@ const initialState: State = {
     loaded: false,
     loading: false,
     months: [],
+    monthsList: [],
     selectedImage: undefined,
     selectedMonth: undefined,
 };
@@ -27,26 +29,17 @@ const initialState: State = {
 export function reducer(state = initialState, action: images.Actions): State {
     switch (action.type) {
         case images.ActionTypes.ADD_IMAGE:
-            return {
+            return objectAssign({}, state, {
                 isEditing: true,
                 isNew: true,
-                loaded: true,
-                loading: false,
-                months: state.months,
-                selectedImage: undefined,
-                selectedMonth: state.selectedMonth,
-            };
+            });
 
         case images.ActionTypes.EDIT_IMAGE:
-            return {
+            return objectAssign({}, state, {
                 isEditing: true,
                 isNew: false,
-                loaded: true,
-                loading: false,
-                months: state.months,
                 selectedImage: action.payload,
-                selectedMonth: state.selectedMonth,
-            };
+            });
         case images.ActionTypes.LOAD:
             return objectAssign({}, initialState, {
                 loading: true
@@ -57,7 +50,6 @@ export function reducer(state = initialState, action: images.Actions): State {
                 loaded: true,
                 loading: false,
                 months: action.payload,
-                selectedMonth: action.payload.length > 0 ? action.payload[0] : undefined,
             });
 
         // case images.ActionTypes.SAVE_IMAGE:
@@ -76,12 +68,19 @@ export function reducer(state = initialState, action: images.Actions): State {
                 selectedMonth: action.payload,
             });
 
+        case images.ActionTypes.LOAD_MONTH_LIST_SUCCESS:
+            return objectAssign({}, state, {
+                monthsList: action.payload,
+                selectedMonth: action.payload.length > 0 ? action.payload[0] : undefined,
+            });
+
         default:
             return state;
     }
 }
 
 export const getImages = (state: State) => state.months;
+export const getMonths = (state: State) => state.monthsList;
 export const getSelectedImage = (state: State) => state.selectedImage;
 export const getSelectedMonth = (state: State) => state.selectedMonth;
 export const getIsLoading = (state: State) => state.loading;
