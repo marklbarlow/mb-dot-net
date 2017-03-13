@@ -44,8 +44,15 @@ export class AngularFireService {
     }
 
     public saveImage(month: Month, image: Image, fullImage: any, thumbnailImage: any): Observable<void> {
-        const path = `photo365/images/${month.name}/${image.dayOfMonth}.jpg`;
-        const thumbnail = `photo365/thumbnails/${month.name}/${image.dayOfMonth}.jpg`;
+
+        if (fullImage === undefined || thumbnailImage === undefined) {
+            image.imageUrl = null;
+            image.thumbnailUrl = null;
+            return Observable.of(this.addImage(month, image));
+        }
+
+        const path = this.getImageFilepath(month, image);
+        const thumbnail = this.getThumbnailFilepath(month, image);
 
         const metadata = {
             contentType: 'image/jpeg',
@@ -78,7 +85,7 @@ export class AngularFireService {
     }
 
     public getImagesForMonth(month: Month): FirebaseListObservable<Image[]> {
-        return this.af.database.list(`${this.ImagesPrefix}/${month.$key}`);
+        return this.af.database.list(`${this.ImagesPrefix}/${month.$key}`, { query: { orderByChild: 'dayOfMonth' } });
     }
 
     public getAllImages(): Observable<ImageMonth[]> {
@@ -95,5 +102,13 @@ export class AngularFireService {
         return this.getImagesForMonth(month).map(imageList => {
             return { month: month.name, images: imageList };
         });
+    }
+
+    private getImageFilepath(month: Month, image: Image): string {
+        return `photo365/images/${month.name}/${image.dayOfMonth}.jpg`;
+    }
+
+    private getThumbnailFilepath(month: Month, image: Image): string {
+        return `photo365/thumbnails/${month.name}/${image.dayOfMonth}.jpg`;
     }
 }

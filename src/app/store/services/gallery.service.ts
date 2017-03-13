@@ -16,7 +16,7 @@ export class GalleryService {
     public imagesForSelectedMonth$: Observable<Image[]>;
 
     constructor(private store: Store<fromRoot.State>, private afs: AngularFireService) {
-        this.images$ = store.select(fromRoot.getImages);
+        this.images$ = store.select(fromRoot.getImages).map(months => months.reverse());
         this.isLoading$ = store.select(fromRoot.getIsLoading);
         this.months$ = store.select(fromRoot.getMonths).map(x => x.reverse());
         this.selectedMonth$ = store.select(fromRoot.getSelectedMonth);
