@@ -51,8 +51,8 @@ export class ManageEffects {
     deleteImage$: Observable<Action> = this.actions$
         .ofType(gallery.ActionTypes.DELETE_IMAGE)
         .switchMap((action: gallery.DeleteImageAction) => {
-            this.afs.deleteImage(action.payload.month, action.payload.image);
-            return Observable.of(new gallery.DeleteImageSuccessAction());
+            return this.afs.deleteImage(action.payload.month, action.payload.image)
+                .map(() => new gallery.DeleteImageSuccessAction());
         });
 
     constructor(private actions$: Actions, private afs: AngularFireService) {

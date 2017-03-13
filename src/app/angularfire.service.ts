@@ -80,8 +80,13 @@ export class AngularFireService {
         this.af.database.object(`${this.ImagesPrefix}/${month.$key}/${image.$key}`).update(image);
     }
 
-    public deleteImage(month: Month, image: Image): void {
-        this.af.database.list(`${this.ImagesPrefix}/${month.$key}`).remove(image.$key);
+    public deleteImage(month: Month, image: Image): Observable<void> {
+        const path = this.getImageFilepath(month, image);
+        const thumbnail = this.getThumbnailFilepath(month, image);
+
+        return Observable.fromPromise(<Promise<void>>this.storage.child(path).delete()
+            .then(() => this.storage.child(thumbnail).delete()
+                .then(() => this.af.database.list(`${this.ImagesPrefix}/${month.$key}`).remove(image.$key))));
     }
 
     public getImagesForMonth(month: Month): FirebaseListObservable<Image[]> {
