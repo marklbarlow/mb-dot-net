@@ -61,7 +61,7 @@ export class AddEditImageDialogComponent {
             });
         } else {
             // When all files are done This forces a change detection
-            this.changeDetectorRef.detectChanges();
+            // this.changeDetectorRef.detectChanges();
         }
     }
 
