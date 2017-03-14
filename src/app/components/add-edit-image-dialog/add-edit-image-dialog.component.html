@@ -5,7 +5,7 @@
             <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="10px">
                 <md-select name="day" placeholder="Day of Month" floatPlaceholder="never" required [(ngModel)]="dayOfMonth">
                     <md-option *ngFor="let day of days" [value]="day">
-                        {{day | dayOfMonth }}
+                        {{ day | dayOfMonth }}
                     </md-option>
                 </md-select>
                 <md-input-container floatPlaceholder="auto">

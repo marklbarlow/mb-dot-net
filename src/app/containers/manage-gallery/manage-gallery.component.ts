@@ -76,13 +76,15 @@ export class ManageGalleryComponent {
             width: '600px',
         });
 
-        dialogRef.componentInstance.days = this.createArray(this.selectedMonth.numberOfDays);
+
 
         if (image !== undefined) {
             dialogRef.componentInstance.dayOfMonth = image.dayOfMonth;
             dialogRef.componentInstance.hidden = image.hidden;
             dialogRef.componentInstance.prompt = image.prompt;
         }
+
+        dialogRef.componentInstance.days = this.createArray(this.selectedMonth.numberOfDays, dialogRef.componentInstance.dayOfMonth);
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
@@ -117,11 +119,11 @@ export class ManageGalleryComponent {
         this.usedDays = days;
     }
 
-    private createArray(maxValue: number): number[] {
+    private createArray(maxValue: number, currentDay: number = undefined): number[] {
         const returnValue: number[] = [];
 
         for (let i = 1; i <= maxValue; i++) {
-            if (this.usedDays.indexOf(i) < 0) {
+            if (currentDay === i || this.usedDays.indexOf(i) < 0) {
                 returnValue.push(i);
             }
         }

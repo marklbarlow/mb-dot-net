@@ -64,7 +64,7 @@ export class AngularFireService {
         if (fullImage === undefined || thumbnailImage === undefined) {
             image.imageUrl = null;
             image.thumbnailUrl = null;
-            return Observable.of(this.addImage(month, image));
+            return Observable.of(this.addOrUpdateImage(month, image));
         }
 
         const path = this.getImageFilepath(month, image);
@@ -83,27 +83,26 @@ export class AngularFireService {
                         image.imageUrl = fullImageUpload.downloadURL;
                         image.thumbnailUrl = thumbnailUpload.downloadURL;
 
-                        this.addImage(month, image);
+                        this.addOrUpdateImage(month, image);
                     }, error => console.log(error));
             }, error => console.log(error)));
     }
 
-    public addImage(month: Month, image: Image): void {
-        this.af.database.list(`${this.ImagesPrefix}/${month.$key}`).push(image);
-    }
-
-    public updateImage(month: Month, image: Image): void {
-        this.af.database.object(`${this.ImagesPrefix}/${month.$key}/${image.$key}`).update(image);
+    private addOrUpdateImage(month: Month, image: Image): void {
+        if (image.$key) {
+            this.af.database.object(`${this.ImagesPrefix}/${month.$key}/${image.$key}`).update({
+                dayOfMonth: image.dayOfMonth,
+                hidden: image.hidden,
+                prompt: image.prompt,
+                imageUrl: image.imageUrl,
+                thumbnailUrl: image.thumbnailUrl,
+            });
+        } else {
+            this.af.database.list(`${this.ImagesPrefix}/${month.$key}`).push(image);
+        }
     }
 
     public deleteImage(month: Month, image: Image): Observable<void> {
-
-        //         return this.deleteStoredImage(month, image);
-
-        // const result = this.af.database.list(`${this.ImagesPrefix}/${month.$key}`).remove(image.$key);
-
-        //         // .map(() => this.af.database.list(`${this.ImagesPrefix}/${month.$key}`).remove(image.$key));
-
 
         const path = this.getImageFilepath(month, image);
         const thumbnail = this.getThumbnailFilepath(month, image);
