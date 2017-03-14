@@ -3,6 +3,7 @@ import * as root from './';
 
 @NgModule({
     declarations: [
+        root.MbImageOverlayComponent,
         root.MbGalleryStubComponent,
         root.MdToolbarStubComponent,
         root.RouterLinkStubDirective,
