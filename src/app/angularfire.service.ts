@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { AngularFire, AngularFireAuth, FirebaseListObservable } from 'angularfire2';
 import * as firebase from 'firebase';
 import { Observable } from 'rxjs/Observable';
@@ -11,7 +12,7 @@ export class AngularFireService {
     private readonly ImagesPrefix = '/photo365/images';
     private readonly MonthsPrefix = '/photo365/months';
 
-    constructor(private af: AngularFire) {
+    constructor(private af: AngularFire, private router: Router) {
         this.storage = firebase.storage().ref();
     }
 
@@ -25,6 +26,7 @@ export class AngularFireService {
 
     public logout(): void {
         this.af.auth.logout();
+        this.router.navigate(['/']);
     }
 
     public getMonths(): Observable<Month[]> {
