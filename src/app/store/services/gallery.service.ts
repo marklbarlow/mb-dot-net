@@ -18,7 +18,7 @@ export class GalleryService {
     constructor(private store: Store<fromRoot.State>, private afs: AngularFireService) {
         this.images$ = store.select(fromRoot.getImages).map(months => months.reverse());
         this.isLoading$ = store.select(fromRoot.getIsLoading);
-        this.months$ = store.select(fromRoot.getMonths).map(x => x.reverse());
+        this.months$ = store.select(fromRoot.getMonths);
         this.selectedMonth$ = store.select(fromRoot.getSelectedMonth);
         this.imagesForSelectedMonth$ = store.select(fromRoot.getSelectedMonth)
             .filter(x => x !== undefined)

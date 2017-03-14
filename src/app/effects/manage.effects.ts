@@ -32,10 +32,10 @@ export class ManageEffects {
     @Effect()
     deleteMonth$: Observable<Action> = this.actions$
         .ofType(gallery.ActionTypes.DELETE_MONTH)
-        .map((action: gallery.DeleteMonthAction) => {
-            this.afs.deleteMonth(action.payload);
+        .switchMap((action: gallery.DeleteMonthAction) => {
 
-            return new gallery.DeleteMonthSuccessAction();
+            return this.afs.deleteMonth(action.payload)
+                .map(() => new gallery.DeleteMonthSuccessAction());
         });
 
     @Effect()

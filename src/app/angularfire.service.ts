@@ -38,9 +38,25 @@ export class AngularFireService {
         });
     }
 
-    public deleteMonth(month: Month): void {
-        this.af.database.object(`${this.MonthsPrefix}/${month.$key}`).remove();
-        this.af.database.list(`${this.ImagesPrefix}/${month.$key}`).remove();
+    public deleteMonth(month: Month): Observable<void> {
+
+        return this.getImagesForMonth(month)
+            .mergeMap(images => {
+                const observables = images.map(image => {
+                    const path = this.getImageFilepath(month, image);
+                    const thumbnail = this.getThumbnailFilepath(month, image);
+
+                    return Observable.fromPromise(<Promise<void>>this.storage.child(path).delete()
+                        .then(() => this.storage.child(thumbnail).delete()))
+                        .first();
+                });
+
+                return Observable.forkJoin(observables)
+                    .map(() => {
+                        this.af.database.object(`${this.MonthsPrefix}/${month.$key}`).remove();
+                        this.af.database.list(`${this.ImagesPrefix}/${month.$key}`).remove();
+                    });
+            });
     }
 
     public saveImage(month: Month, image: Image, fullImage: any, thumbnailImage: any): Observable<void> {
@@ -81,6 +97,14 @@ export class AngularFireService {
     }
 
     public deleteImage(month: Month, image: Image): Observable<void> {
+
+        //         return this.deleteStoredImage(month, image);
+
+        // const result = this.af.database.list(`${this.ImagesPrefix}/${month.$key}`).remove(image.$key);
+
+        //         // .map(() => this.af.database.list(`${this.ImagesPrefix}/${month.$key}`).remove(image.$key));
+
+
         const path = this.getImageFilepath(month, image);
         const thumbnail = this.getThumbnailFilepath(month, image);
 
@@ -101,6 +125,14 @@ export class AngularFireService {
                         return this.getImageMonth(month).first();
                     }));
                 }));
+    }
+
+    private deleteStoredImage(month: Month, image: Image): Observable<void> {
+        const path = this.getImageFilepath(month, image);
+        const thumbnail = this.getThumbnailFilepath(month, image);
+
+        return Observable.fromPromise(<Promise<void>>this.storage.child(path).delete()
+            .then(() => this.storage.child(thumbnail).delete()));
     }
 
     private getImageMonth(month: Month): Observable<ImageMonth> {
