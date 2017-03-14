@@ -1,7 +1,7 @@
 <h1>Photo 365</h1>
 
 <div fxLayout="column">
-  <mb-gallery *ngFor="let gallery of galleryService.images$ | async" [imageCollection]="gallery" (imageSelected)="onImageSelected(gallery, $event)"></mb-gallery>
+  <mb-gallery *ngFor="let gallery of galleryService.images$ | async | reverse" [imageCollection]="gallery" (imageSelected)="onImageSelected(gallery, $event)"></mb-gallery>
 </div>
 
 <mb-image-overlay *ngIf="overlayService.isOpen$ | async" (showPrevious)="prevImage()" (showNext)="nextImage()" (close)="closeGallery()"
