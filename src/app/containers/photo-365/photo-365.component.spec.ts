@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { Photo365Component } from './photo-365.component';
 import { GalleryService, ImageMonth, OverlayService } from '../../store';
-import { MbGalleryStubComponent, MbImageOverlayComponent } from '../../../testing';
+import { MbGalleryStubComponent, MbImageOverlayComponent, ReversePipeStub } from '../../../testing';
 
 describe('Photo365Component', () => {
   let component: Photo365Component;
@@ -25,7 +25,9 @@ describe('Photo365Component', () => {
       declarations: [
         MbGalleryStubComponent,
         MbImageOverlayComponent,
-        Photo365Component],
+        Photo365Component,
+        ReversePipeStub
+      ],
       imports: [MaterialModule],
       providers: [
         { provide: GalleryService, useValue: galleryServiceStub },
