@@ -6,6 +6,7 @@ import * as root from './';
         root.MbImageOverlayComponent,
         root.MbGalleryStubComponent,
         root.MdToolbarStubComponent,
+        root.ReversePipeStub,
         root.RouterLinkStubDirective,
         root.RouterOutletStubComponent,
     ],
