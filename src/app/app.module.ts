@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -44,6 +45,7 @@ import { AngularFireService } from './angularfire.service';
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase, environment.firebaseAuth),
+    BrowserAnimationsModule,
     BrowserModule,
     FlexLayoutModule,
     FormsModule,

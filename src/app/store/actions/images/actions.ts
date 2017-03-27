@@ -1,157 +1,156 @@
 import { Action } from '@ngrx/store';
 import { Image, ImageMonth, Month } from '../../model';
-import { type } from '../../util';
 
-export const ActionTypes = {
-    ADD_IMAGE: type('[Images] Add Image'),
-    EDIT_IMAGE: type('[Images] Edit Image'),
-    LOAD: type('[Images] Load'),
-    LOAD_SUCCESS: type('[Images] Load Success'),
-    LOAD_FAIL: type('[Images] Load Fail'),
-    SAVE_IMAGE: type('[Images] Save Image'),
-    SAVE_IMAGE_SUCCESS: type('[Images] Save Image Success'),
-    SAVE_IMAGE_FAIL: type('[Images] Save Image Fail'),
-    SELECT_IMAGE: type('[Images] Select Image'),
-    SELECT_MONTH: type('[Images] Select Month'),
+export const ActionTypes  = new class {
+    readonly ADD_IMAGE = '[Images] Add Image';
+    readonly EDIT_IMAGE = '[Images] Edit Image';
+    readonly LOAD = '[Images] Load';
+    readonly LOAD_SUCCESS = '[Images] Load Success';
+    readonly LOAD_FAIL = '[Images] Load Fail';
+    readonly SAVE_IMAGE = '[Images] Save Image';
+    readonly SAVE_IMAGE_SUCCESS = '[Images] Save Image Success';
+    readonly SAVE_IMAGE_FAIL = '[Images] Save Image Fail';
+    readonly SELECT_IMAGE = '[Images] Select Image';
+    readonly SELECT_MONTH = '[Images] Select Month';
 
-    DELETE_IMAGE: type('[Images] Delete Image'),
-    DELETE_IMAGE_SUCCESS: type('[Images] Delete Image Success'),
-    DELETE_IMAGE_FAIL: type('[Images] Delete Image Fail'),
+    readonly DELETE_IMAGE = '[Images] Delete Image';
+    readonly DELETE_IMAGE_SUCCESS = '[Images] Delete Image Success';
+    readonly DELETE_IMAGE_FAIL = '[Images] Delete Image Fail';
 
-    LOAD_MONTH_LIST: type('[Images] Load Month List'),
-    LOAD_MONTH_LIST_SUCCESS: type('[Images] Load Month List Success'),
-    ADD_MONTH: type('[Images] Add Month'),
-    ADD_MONTH_SUCCESS: type('[Images] Add Month Success'),
-    ADD_MONTH_FAIL: type('[Images] Add Month Fail'),
-    DELETE_MONTH: type('[Images] Delete Month'),
-    DELETE_MONTH_SUCCESS: type('[Images] Delete Month Success'),
-    DELETE_MONTH_FAIL: type('[Images] Delete Month Fail')
+    readonly LOAD_MONTH_LIST = '[Images] Load Month List';
+    readonly LOAD_MONTH_LIST_SUCCESS = '[Images] Load Month List Success';
+    readonly ADD_MONTH = '[Images] Add Month';
+    readonly ADD_MONTH_SUCCESS = '[Images] Add Month Success';
+    readonly ADD_MONTH_FAIL = '[Images] Add Month Fail';
+    readonly DELETE_MONTH = '[Images] Delete Month';
+    readonly DELETE_MONTH_SUCCESS = '[Images] Delete Month Success';
+    readonly DELETE_MONTH_FAIL = '[Images] Delete Month Fail';
 };
 
 export class LoadAction implements Action {
-    type = ActionTypes.LOAD;
+    readonly type = ActionTypes.LOAD;
 
     constructor() {
     }
 }
 
 export class LoadFailAction implements Action {
-    type = ActionTypes.LOAD_FAIL;
+    readonly type = ActionTypes.LOAD_FAIL;
 
     constructor(public payload: string) {
     }
 }
 
 export class LoadSuccessAction implements Action {
-    type = ActionTypes.LOAD_SUCCESS;
+    readonly type = ActionTypes.LOAD_SUCCESS;
 
     constructor(public payload: ImageMonth[]) {
     }
 }
 
 export class SelectMonthAction implements Action {
-    type = ActionTypes.SELECT_MONTH;
+    readonly type = ActionTypes.SELECT_MONTH;
 
     constructor(public payload: Month) {
     }
 }
 
 export class SelectImageAction implements Action {
-    type = ActionTypes.SELECT_IMAGE;
+    readonly type = ActionTypes.SELECT_IMAGE;
 
     constructor(public payload: Image) {
     }
 }
 
 export class AddImageAction implements Action {
-    type = ActionTypes.ADD_IMAGE;
+    readonly type = ActionTypes.ADD_IMAGE;
 
     constructor() {
     }
 }
 
 export class EditImageAction implements Action {
-    type = ActionTypes.EDIT_IMAGE;
+    readonly type = ActionTypes.EDIT_IMAGE;
 
     constructor(public payload: Image) {
     }
 }
 
 export class SaveImageAction implements Action {
-    type = ActionTypes.SAVE_IMAGE;
+    readonly type = ActionTypes.SAVE_IMAGE;
 
     constructor(public payload: { month: Month, image: Image, fullImage: any, thumbnailImage: any }) {
     }
 }
 
 export class SaveImageSuccessAction implements Action {
-    type = ActionTypes.SAVE_IMAGE_SUCCESS;
+    readonly type = ActionTypes.SAVE_IMAGE_SUCCESS;
 
     constructor(public payload: Image) {
     }
 }
 
 export class SaveImageFailAction implements Action {
-    type = ActionTypes.SAVE_IMAGE_FAIL;
+    readonly type = ActionTypes.SAVE_IMAGE_FAIL;
 
     constructor(public payload: string) {
     }
 }
 
 export class AddMonthAction implements Action {
-    type = ActionTypes.ADD_MONTH;
+    readonly type = ActionTypes.ADD_MONTH;
 
     constructor(public payload: { month: string, numberOfDays: number }) {
     }
 }
 
 export class AddMonthSuccessAction implements Action {
-    type = ActionTypes.ADD_MONTH_SUCCESS;
+    readonly type = ActionTypes.ADD_MONTH_SUCCESS;
 }
 
 export class AddMonthFailAction implements Action {
-    type = ActionTypes.ADD_MONTH_FAIL;
+    readonly type = ActionTypes.ADD_MONTH_FAIL;
 
     constructor(public payload: string) {
     }
 }
 
 export class DeleteMonthAction implements Action {
-    type = ActionTypes.DELETE_MONTH;
+    readonly type = ActionTypes.DELETE_MONTH;
 
     constructor(public payload: Month) {
     }
 }
 
 export class DeleteMonthSuccessAction implements Action {
-    type = ActionTypes.DELETE_MONTH_SUCCESS;
+    readonly type = ActionTypes.DELETE_MONTH_SUCCESS;
 }
 
 export class DeleteMonthFailAction implements Action {
-    type = ActionTypes.DELETE_MONTH_FAIL;
+    readonly type = ActionTypes.DELETE_MONTH_FAIL;
 }
 
 export class DeleteImageAction implements Action {
-    type = ActionTypes.DELETE_IMAGE;
+    readonly type = ActionTypes.DELETE_IMAGE;
 
     constructor(public payload: { month: Month, image: Image }) {
     }
 }
 
 export class DeleteImageSuccessAction implements Action {
-    type = ActionTypes.DELETE_IMAGE_SUCCESS;
+    readonly type = ActionTypes.DELETE_IMAGE_SUCCESS;
 }
 
 export class DeleteImageFailAction implements Action {
-    type = ActionTypes.DELETE_IMAGE_FAIL;
+    readonly type = ActionTypes.DELETE_IMAGE_FAIL;
 }
 
 export class LoadMonthListAction implements Action {
-    type = ActionTypes.LOAD_MONTH_LIST;
+    readonly type = ActionTypes.LOAD_MONTH_LIST;
 }
 
 export class LoadMonthListSuccessAction implements Action {
-    type = ActionTypes.LOAD_MONTH_LIST_SUCCESS;
+    readonly type = ActionTypes.LOAD_MONTH_LIST_SUCCESS;
 
     constructor(public payload: Month[]) {
     }

@@ -10,7 +10,7 @@ import { Technology } from './technology.interface';
 export class AboutComponent {
 
   public list: Technology[] = [
-    { done: true, name: 'Angular 2', url: 'https://angular.io' },
+    { done: true, name: 'Angular', url: 'https://angular.io' },
     { done: true, name: 'Angular-CLI', url: 'https://cli.angular.io' },
     { done: true, name: 'Angular Material', url: 'https://material.angular.io' },
     { done: true, name: 'Coveralls', url: 'https://coveralls.io/github/marklbarlow/mb-dot-net' },
