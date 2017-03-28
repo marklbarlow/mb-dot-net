@@ -25,7 +25,7 @@ export const ActionTypes  = new class {
     readonly DELETE_MONTH = '[Images] Delete Month';
     readonly DELETE_MONTH_SUCCESS = '[Images] Delete Month Success';
     readonly DELETE_MONTH_FAIL = '[Images] Delete Month Fail';
-};
+}();
 
 export class LoadAction implements Action {
     readonly type = ActionTypes.LOAD;

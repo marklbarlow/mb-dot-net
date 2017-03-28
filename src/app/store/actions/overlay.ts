@@ -6,7 +6,7 @@ export const ActionTypes = new class {
     readonly OVERLAY_NEXT = '[Overlay] Next';
     readonly OVERLAY_OPEN = '[Overlay] Open';
     readonly OVERLAY_PREVIOUS = '[Overlay] Previous';
-};
+}();
 
 export class OverlayCloseAction implements Action {
     readonly type = ActionTypes.OVERLAY_CLOSE;
