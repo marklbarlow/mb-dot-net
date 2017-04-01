@@ -55,11 +55,11 @@ export function reducer(state = initialState, action: overlay.Actions): State {
 export const getHasNext = (state: State) => state.selectedIndex < state.imageMonth.images.length - 1;
 export const getHasPrevious = (state: State) => state.selectedIndex > 0;
 export const getImageText = (state: State) => {
-    const image = state.imageMonth.images[state.selectedIndex];
+    const image = state.imageMonth.images.filter(x => !x.hidden)[state.selectedIndex];
     return `${image.prompt} - ${utils.convertNumberToDayOfMonth(image.dayOfMonth)} ${state.imageMonth.month}`;
 };
 export const getImageUrl = (state: State) => {
-    const image = state.imageMonth.images[state.selectedIndex];
+    const image = state.imageMonth.images.filter(x => !x.hidden)[state.selectedIndex];
     return image.imageUrl ? image.imageUrl : comingSoonUrl;
 };
 export const getIsOpen = (state: State) => state.isOpen;
