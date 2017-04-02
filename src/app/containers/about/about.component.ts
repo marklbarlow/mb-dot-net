@@ -11,7 +11,7 @@ export class AboutComponent {
 
   public list: Technology[] = [
     { done: true, name: 'Angular', url: 'https://angular.io' },
-    { done: true, name: 'Angular-CLI', url: 'https://cli.angular.io' },
+    { done: true, name: 'Angular CLI', url: 'https://cli.angular.io' },
     { done: true, name: 'Angular Material', url: 'https://material.angular.io' },
     { done: true, name: 'Coveralls', url: 'https://coveralls.io/github/marklbarlow/mb-dot-net' },
     { done: true, name: 'Firebase', url: 'https://firebase.google.com' },
