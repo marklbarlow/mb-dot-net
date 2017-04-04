@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import * as fromRoot from '../reducers';
-import * as galleryActions from '../actions/images';
+import * as manageActions from '../actions/manage';
 import { Image, ImageMonth, Month } from '../model';
 import { AngularFireService } from '../../angularfire.service';
 
@@ -26,19 +26,19 @@ export class GalleryService {
     }
 
     public selectMonth(month: Month): void {
-        this.store.dispatch(new galleryActions.SelectMonthAction(month));
+        this.store.dispatch(new manageActions.SelectMonthAction(month));
     }
 
     public addMonth(month: string, numberOfDays: number): void {
-        this.store.dispatch(new galleryActions.AddMonthAction({ month: month, numberOfDays: numberOfDays }));
+        this.store.dispatch(new manageActions.AddMonthAction({ month: month, numberOfDays: numberOfDays }));
     }
 
     public deleteMonth(month: Month): void {
-        this.store.dispatch(new galleryActions.DeleteMonthAction(month));
+        this.store.dispatch(new manageActions.DeleteMonthAction(month));
     }
 
     public saveImage(month: Month, image: Image, fullImage: any, thumbnailImage: any) {
-        this.store.dispatch(new galleryActions.SaveImageAction({
+        this.store.dispatch(new manageActions.SaveImageAction({
             month: month,
             image: image,
             fullImage: fullImage,
@@ -47,6 +47,6 @@ export class GalleryService {
     }
 
     public deleteImage(month: Month, image: Image) {
-        this.store.dispatch(new galleryActions.DeleteImageAction({ month: month, image: image }));
+        this.store.dispatch(new manageActions.DeleteImageAction({ month: month, image: image }));
     }
 }

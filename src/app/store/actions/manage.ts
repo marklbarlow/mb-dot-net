@@ -1,22 +1,16 @@
 import { Action } from '@ngrx/store';
-import { Image, ImageMonth, Month } from '../../model';
+import { Image, Month } from '../model';
 
 export const ActionTypes  = new class {
     readonly ADD_IMAGE = '[Images] Add Image';
     readonly EDIT_IMAGE = '[Images] Edit Image';
-    readonly LOAD = '[Images] Load';
-    readonly LOAD_SUCCESS = '[Images] Load Success';
-    readonly LOAD_FAIL = '[Images] Load Fail';
     readonly SAVE_IMAGE = '[Images] Save Image';
     readonly SAVE_IMAGE_SUCCESS = '[Images] Save Image Success';
     readonly SAVE_IMAGE_FAIL = '[Images] Save Image Fail';
-    readonly SELECT_IMAGE = '[Images] Select Image';
     readonly SELECT_MONTH = '[Images] Select Month';
-
     readonly DELETE_IMAGE = '[Images] Delete Image';
     readonly DELETE_IMAGE_SUCCESS = '[Images] Delete Image Success';
     readonly DELETE_IMAGE_FAIL = '[Images] Delete Image Fail';
-
     readonly LOAD_MONTH_LIST = '[Images] Load Month List';
     readonly LOAD_MONTH_LIST_SUCCESS = '[Images] Load Month List Success';
     readonly ADD_MONTH = '[Images] Add Month';
@@ -27,38 +21,10 @@ export const ActionTypes  = new class {
     readonly DELETE_MONTH_FAIL = '[Images] Delete Month Fail';
 }();
 
-export class LoadAction implements Action {
-    readonly type = ActionTypes.LOAD;
-
-    constructor() {
-    }
-}
-
-export class LoadFailAction implements Action {
-    readonly type = ActionTypes.LOAD_FAIL;
-
-    constructor(public payload: string) {
-    }
-}
-
-export class LoadSuccessAction implements Action {
-    readonly type = ActionTypes.LOAD_SUCCESS;
-
-    constructor(public payload: ImageMonth[]) {
-    }
-}
-
 export class SelectMonthAction implements Action {
     readonly type = ActionTypes.SELECT_MONTH;
 
     constructor(public payload: Month) {
-    }
-}
-
-export class SelectImageAction implements Action {
-    readonly type = ActionTypes.SELECT_IMAGE;
-
-    constructor(public payload: Image) {
     }
 }
 
@@ -159,13 +125,9 @@ export class LoadMonthListSuccessAction implements Action {
 export type Actions
     = AddImageAction
     | EditImageAction
-    | LoadAction
-    | LoadFailAction
-    | LoadSuccessAction
     | SaveImageAction
     | SaveImageFailAction
     | SaveImageSuccessAction
-    | SelectImageAction
     | SelectMonthAction
     | AddMonthAction
     | AddMonthFailAction

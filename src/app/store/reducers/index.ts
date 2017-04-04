@@ -5,19 +5,22 @@ import { storeFreeze } from 'ngrx-store-freeze';
 import { createSelector } from 'reselect';
 import { environment } from '../../../environments/environment';
 import * as fromImages from './images.reducer';
+import * as fromManage from './manage.reducer';
 import * as fromOverlay from './overlay.reducer';
 
 export interface State {
     gallery: fromImages.State;
+    manage: fromManage.State;
     overlay: fromOverlay.State;
 }
 
 const reducers = {
     gallery: fromImages.reducer,
+    manage: fromManage.reducer,
     overlay: fromOverlay.reducer,
 };
 
-const developmentReducer: ActionReducer<State> = combineReducers(reducers); // compose(storeFreeze, combineReducers)(reducers);
+const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
 const productionReducer: ActionReducer<State> = combineReducers(reducers);
 
 export function reducer(state: any, action: any) {
@@ -30,10 +33,12 @@ export function reducer(state: any, action: any) {
 
 export const getGalleryState = (state: State) => state.gallery;
 export const getImages = createSelector(getGalleryState, fromImages.getImages);
-export const getMonths = createSelector(getGalleryState, fromImages.getMonths);
-export const getSelectedImage = createSelector(getGalleryState, fromImages.getSelectedImage);
-export const getSelectedMonth = createSelector(getGalleryState, fromImages.getSelectedMonth);
-export const getIsLoading = createSelector(getGalleryState, fromImages.getIsLoading);
+
+export const getManageState = (state: State) => state.manage;
+export const getMonths = createSelector(getManageState, fromManage.getMonths);
+export const getSelectedImage = createSelector(getManageState, fromManage.getSelectedImage);
+export const getSelectedMonth = createSelector(getManageState, fromManage.getSelectedMonth);
+export const getIsLoading = createSelector(getManageState, fromManage.getIsLoading);
 
 export const getOverlayState = (state: State) => state.overlay;
 export const getHasNext = createSelector(getOverlayState, fromOverlay.getHasNext);
