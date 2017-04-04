@@ -66,3 +66,14 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
  * Needed for: All but Chrome, Firefox, Edge, IE11 and Safari 10
  */
 // import 'intl';  // Run `npm install --save intl`.
+
+import 'rxjs/add/observable/fromPromise';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/reduce';
+import 'rxjs/add/operator/startWith';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/skip';
+import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/takeUntil';
+import 'rxjs/add/operator/withLatestFrom';

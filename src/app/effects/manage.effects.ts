@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import * as gallery from '../store/actions/images';
+import * as gallery from '../store/actions/manage';
 import { AngularFireService } from '../angularfire.service';
 
 @Injectable()
