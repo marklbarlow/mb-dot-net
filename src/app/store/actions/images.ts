@@ -9,9 +9,6 @@ export const ActionTypes = new class {
 
 export class LoadAction implements Action {
     readonly type = ActionTypes.LOAD;
-
-    constructor() {
-    }
 }
 
 export class LoadFailAction implements Action {

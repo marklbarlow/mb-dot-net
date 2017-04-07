@@ -30,9 +30,6 @@ export class SelectMonthAction implements Action {
 
 export class AddImageAction implements Action {
     readonly type = ActionTypes.ADD_IMAGE;
-
-    constructor() {
-    }
 }
 
 export class EditImageAction implements Action {
