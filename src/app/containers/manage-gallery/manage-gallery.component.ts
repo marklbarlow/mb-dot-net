@@ -1,10 +1,16 @@
+import { trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import * as animations from '../../animations';
 import { MdDialog } from '@angular/material';
 import { Image, GalleryService, Month } from '../../store';
 import { AddEditImageDialogComponent, AddEditMonthDialogComponent } from '../../components';
 
-
 @Component({
+    animations: [
+        trigger('itemState', [
+            animations.getEnterTransition()
+        ])
+    ],
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'mb-manage-gallery',
     styleUrls: ['./manage-gallery.component.scss'],

@@ -1,7 +1,14 @@
+import { trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import * as animations from '../../animations';
 import { ImageMonth } from '../../store';
 
 @Component({
+    animations: [
+        trigger('itemState', [
+            animations.getEnterTransition()
+        ])
+    ],
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'mb-gallery',
     styleUrls: ['./gallery.component.scss'],
