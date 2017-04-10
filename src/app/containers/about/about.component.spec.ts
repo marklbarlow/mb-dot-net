@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MaterialModule } from '@angular/material';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
 
 import { AboutComponent } from './about.component';
@@ -11,7 +12,10 @@ describe('AboutComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AboutComponent],
-      imports: [MaterialModule.forRoot()]
+      imports: [
+        MaterialModule.forRoot(),
+        NoopAnimationsModule
+      ]
     })
       .compileComponents();
   }));

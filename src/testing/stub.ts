@@ -11,9 +11,11 @@ export class MbImageOverlayComponent {
     @Input() hasNext: any;
     @Input() imageText: any;
     @Input() imageUrl: any;
+    @Input() loading: any;
     @Output() close: any;
     @Output() showPrevious: any;
     @Output() showNext: any;
+    @Output() loadingComplete: any;
 }
 
 @Pipe({ name: 'reverse' })
