@@ -60,6 +60,6 @@ export const getImageText = (state: State) => {
 };
 export const getImageUrl = (state: State) => {
     const image = state.imageMonth.images.filter(x => !x.hidden)[state.selectedIndex];
-    return image.imageUrl ? image.imageUrl : comingSoonUrl;
+    return image.imageUrl ? image.imageUrl : `${comingSoonUrl}&index=${state.selectedIndex}`;
 };
 export const getIsOpen = (state: State) => state.isOpen;

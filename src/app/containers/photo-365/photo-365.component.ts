@@ -18,15 +18,19 @@ export class Photo365Component {
         this.overlayService.open(imageMonth, selectedIndex);
     }
 
-    public prevImage() {
+    public prevImage(): void {
         this.overlayService.previous();
     }
 
-    public nextImage() {
+    public nextImage(): void {
         this.overlayService.next();
     }
 
-    public closeGallery() {
+    public closeGallery(): void {
         this.overlayService.close();
+    }
+
+    public onLoadingComplete(): void {
+        this.overlayService.loadingComplete();
     }
 }

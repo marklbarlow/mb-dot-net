@@ -4,6 +4,6 @@
   <mb-gallery *ngFor="let gallery of galleryService.images$ | async | reverse" [imageCollection]="gallery" (imageSelected)="onImageSelected(gallery, $event)"></mb-gallery>
 </div>
 
-<mb-image-overlay *ngIf="overlayService.isOpen$ | async" (showPrevious)="prevImage()" (showNext)="nextImage()" (close)="closeGallery()"
+<mb-image-overlay *ngIf="overlayService.isOpen$ | async" (showPrevious)="prevImage()" (showNext)="nextImage()" (close)="closeGallery()" (loadingComplete)="onLoadingComplete()"
   [hasPrevious]="overlayService.hasPrevious$ | async" [hasNext]="overlayService.hasNext$ | async" [imageText]="overlayService.imageText$ | async"
-  [imageUrl]="overlayService.imageUrl$ | async"></mb-image-overlay>
+  [imageUrl]="overlayService.imageUrl$ | async" [loading]="overlayService.isLoading$ | async"></mb-image-overlay>

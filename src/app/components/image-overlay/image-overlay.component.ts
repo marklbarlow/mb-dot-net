@@ -11,20 +11,29 @@ export class ImageOverlayComponent {
     @Input() hasNext = false;
     @Input() imageText: string;
     @Input() imageUrl: string;
+    @Input() loading = true;
     @Output() close: EventEmitter<void> = new EventEmitter<void>();
     @Output() showPrevious: EventEmitter<void> = new EventEmitter<void>();
     @Output() showNext: EventEmitter<void> = new EventEmitter<void>();
-    loading = false;
+    @Output() loadingComplete: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     public prevImage(): void {
-        this.showPrevious.emit();
+        if (this.hasPrevious) {
+            this.showPrevious.emit();
+        }
     }
 
     public nextImage(): void {
-        this.showNext.emit();
+        if (this.hasNext) {
+            this.showNext.emit();
+        }
     }
 
     public onClose(): void {
         this.close.emit();
+    }
+
+    public onLoadComplete(): void {
+        this.loadingComplete.emit();
     }
 }

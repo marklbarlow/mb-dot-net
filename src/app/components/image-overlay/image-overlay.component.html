@@ -7,7 +7,7 @@
         <a class="nav-left" *ngIf="hasPrevious" (click)="prevImage()">
             <md-icon>keyboard_arrow_left</md-icon>
         </a>
-        <img *ngIf="!loading" [src]="imageUrl" (click)="nextImage()" class="effect" />
+        <img [class.hidden-image]="loading" [src]="imageUrl" (click)="nextImage()" class="effect" (load)="onLoadComplete()" />
         <a class="nav-right" *ngIf="hasNext" (click)="nextImage()">
             <md-icon>keyboard_arrow_right</md-icon>
         </a>
