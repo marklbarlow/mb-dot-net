@@ -3,8 +3,8 @@ import { MdDialogRef } from '@angular/material';
 import { AngularFireService } from '../../angularfire.service';
 import { Image } from '../../store';
 
-declare var FileReader: any;
-declare var document: any;
+declare const FileReader: any;
+declare const document: any;
 
 @Component({
     // changeDetection: ChangeDetectionStrategy.OnPush,

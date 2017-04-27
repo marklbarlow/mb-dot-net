@@ -2,8 +2,9 @@ import * as overlay from '../actions/overlay';
 import { ImageMonth } from '../model';
 import * as utils from '../../utils';
 
-declare var require;
+declare const require;
 const objectAssign = require('object-assign');
+// tslint:disable-next-line:max-line-length
 const comingSoonUrl = 'https://firebasestorage.googleapis.com/v0/b/website-a49d3.appspot.com/o/photo365%2Fcoming-soon.jpg?alt=media&token=efa0efa4-4e6d-4bf1-b183-3404e0042707';
 
 export interface State {

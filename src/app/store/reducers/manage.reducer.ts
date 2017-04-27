@@ -1,7 +1,7 @@
 import * as images from '../actions/manage';
 import { Image, Month } from '../model';
 
-declare var require;
+declare const require;
 const objectAssign = require('object-assign');
 
 export interface State {

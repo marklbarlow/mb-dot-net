@@ -15,6 +15,7 @@ import { ImageMonth } from '../../store';
     templateUrl: './gallery.component.html',
 })
 export class GalleryComponent {
+    // tslint:disable-next-line:max-line-length
     public comingSoonUrl = 'https://firebasestorage.googleapis.com/v0/b/website-a49d3.appspot.com/o/photo365%2Fcoming-soon.jpg?alt=media&token=efa0efa4-4e6d-4bf1-b183-3404e0042707';
     @Input() imageCollection: ImageMonth;
     @Output() imageSelected: EventEmitter<number> = new EventEmitter<number>();
