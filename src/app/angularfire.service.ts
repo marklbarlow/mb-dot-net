@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFire, AngularFireAuth, FirebaseListObservable } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import * as firebase from 'firebase';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/mergeMap';
 import { Image, ImageMonth, Month } from './store';
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class AngularFireService {
@@ -12,29 +14,33 @@ export class AngularFireService {
     private readonly ImagesPrefix = '/photo365/images';
     private readonly MonthsPrefix = '/photo365/months';
 
-    constructor(private af: AngularFire, private router: Router) {
+    constructor(
+        private db: AngularFireDatabase,
+        private afAuth: AngularFireAuth,
+        private router: Router) {
+        firebase.initializeApp(environment.firebase, 'mb-dot-net');
         this.storage = firebase.storage().ref();
     }
 
-    public auth(): AngularFireAuth {
-        return this.af.auth;
+    public auth(): Observable<firebase.User> {
+        return this.afAuth.authState;
     }
 
     public login(): void {
-        this.af.auth.login();
+        this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
     }
 
     public logout(): void {
-        this.af.auth.logout();
+        this.afAuth.auth.signOut();
         this.router.navigate(['/']);
     }
 
     public getMonths(): Observable<Month[]> {
-        return this.af.database.list(`${this.MonthsPrefix}`);
+        return this.db.list(`${this.MonthsPrefix}`);
     }
 
     public addMonth(month: string, numberOfDays: number): void {
-        this.af.database.list(`${this.MonthsPrefix}`).push({
+        this.db.list(`${this.MonthsPrefix}`).push({
             name: month,
             numberOfDays: numberOfDays,
         });
@@ -55,8 +61,8 @@ export class AngularFireService {
 
                 return Observable.forkJoin(observables)
                     .map(() => {
-                        this.af.database.object(`${this.MonthsPrefix}/${month.$key}`).remove();
-                        this.af.database.list(`${this.ImagesPrefix}/${month.$key}`).remove();
+                        this.db.object(`${this.MonthsPrefix}/${month.$key}`).remove();
+                        this.db.list(`${this.ImagesPrefix}/${month.$key}`).remove();
                     });
             });
     }
@@ -92,7 +98,7 @@ export class AngularFireService {
 
     private addOrUpdateImage(month: Month, image: Image): void {
         if (image.$key) {
-            this.af.database.object(`${this.ImagesPrefix}/${month.$key}/${image.$key}`).update({
+            this.db.object(`${this.ImagesPrefix}/${month.$key}/${image.$key}`).update({
                 dayOfMonth: image.dayOfMonth,
                 hidden: image.hidden,
                 prompt: image.prompt,
@@ -100,7 +106,7 @@ export class AngularFireService {
                 thumbnailUrl: image.thumbnailUrl,
             });
         } else {
-            this.af.database.list(`${this.ImagesPrefix}/${month.$key}`).push(image);
+            this.db.list(`${this.ImagesPrefix}/${month.$key}`).push(image);
         }
     }
 
@@ -111,15 +117,15 @@ export class AngularFireService {
 
         return Observable.fromPromise(<Promise<void>>this.storage.child(path).delete()
             .then(() => this.storage.child(thumbnail).delete()
-                .then(() => this.af.database.list(`${this.ImagesPrefix}/${month.$key}`).remove(image.$key))));
+                .then(() => this.db.list(`${this.ImagesPrefix}/${month.$key}`).remove(image.$key))));
     }
 
     public getImagesForMonth(month: Month): FirebaseListObservable<Image[]> {
-        return this.af.database.list(`${this.ImagesPrefix}/${month.$key}`, { query: { orderByChild: 'dayOfMonth' } });
+        return this.db.list(`${this.ImagesPrefix}/${month.$key}`, { query: { orderByChild: 'dayOfMonth' } });
     }
 
     public getAllImages(): Observable<ImageMonth[]> {
-        return this.af.database.list(`${this.ImagesPrefix}`)
+        return this.db.list(`${this.ImagesPrefix}`)
             .mergeMap(() => this.getMonths()
                 .mergeMap(months => {
                     return Observable.forkJoin(months.map(month => {

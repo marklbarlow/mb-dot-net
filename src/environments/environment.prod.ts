@@ -1,5 +1,3 @@
-import { AuthProviders, AuthMethods } from 'angularfire2';
-
 export const environment = {
   production: true,
   firebase: {
@@ -7,9 +5,5 @@ export const environment = {
     authDomain: 'website-a49d3.firebaseapp.com',
     databaseURL: 'https://website-a49d3.firebaseio.com',
     storageBucket: 'website-a49d3.appspot.com',
-  },
-  firebaseAuth: {
-    provider: AuthProviders.Google,
-    method: AuthMethods.Redirect
   }
 };

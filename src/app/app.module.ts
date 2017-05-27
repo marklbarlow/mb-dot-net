@@ -10,6 +10,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import 'hammerjs';
 
 import { environment } from '../environments/environment';
@@ -44,7 +46,9 @@ import { AngularFireService } from './angularfire.service';
     components.AddEditMonthDialogComponent,
   ],
   imports: [
-    AngularFireModule.initializeApp(environment.firebase, environment.firebaseAuth),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     BrowserAnimationsModule,
     BrowserModule,
     FlexLayoutModule,

@@ -3,8 +3,6 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
-import { AuthProviders, AuthMethods } from 'angularfire2';
-
 export const environment = {
   production: false,
   firebase: {
@@ -12,9 +10,5 @@ export const environment = {
     authDomain: 'website-a49d3.firebaseapp.com',
     databaseURL: 'https://website-a49d3.firebaseio.com',
     storageBucket: 'website-a49d3.appspot.com',
-  },
-  firebaseAuth: {
-    provider: AuthProviders.Google,
-    method: AuthMethods.Redirect
   }
 };
