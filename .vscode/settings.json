@@ -1,0 +1,16 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        ".firebaserc": true,
+        ".gitignore": true,
+        ".travis.yml": true,
+        ".vscode": true,
+        "firebase.json": true,
+        "node_modules": true
+    },
+    "typescript.tsdk": "./node_modules/typescript/lib"
+}
