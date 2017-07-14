@@ -22,7 +22,7 @@ describe('AppNavBarComponent', () => {
         AppNavBarComponent,
         RouterLinkStubDirective,
       ],
-      imports: [MaterialModule.forRoot()],
+      imports: [MaterialModule],
       providers: [
         { provide: AngularFireService, useValue: afServiceStub },
       ]

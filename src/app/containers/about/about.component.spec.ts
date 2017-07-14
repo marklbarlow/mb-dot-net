@@ -14,7 +14,7 @@ describe('AboutComponent', () => {
     TestBed.configureTestingModule({
       declarations: [AboutComponent],
       imports: [
-        MaterialModule.forRoot(),
+        MaterialModule,
         NoopAnimationsModule
       ]
     })
