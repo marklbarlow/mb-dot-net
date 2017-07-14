@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { TestBed, async } from '@angular/core/testing';
-import { SharedModule } from './shared.module';
+import { async, TestBed } from '@angular/core/testing';
+
+import { MdToolbarStubComponent, RouterOutletStubComponent } from '../testing';
 import { AppComponent } from './app.component';
-import { RouterOutletStubComponent, MdToolbarStubComponent } from '../testing';
+import { SharedModule } from './shared.module';
 
 @Component({ selector: 'mb-app-nav-bar', template: '' })
 class NavBarStubComponent { }

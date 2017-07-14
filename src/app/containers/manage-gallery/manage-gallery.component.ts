@@ -1,9 +1,10 @@
 import { trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import * as animations from '../../animations';
 import { MdDialog } from '@angular/material';
-import { Image, GalleryService, Month } from '../../store';
+
+import * as animations from '../../animations';
 import { AddEditImageDialogComponent, AddEditMonthDialogComponent } from '../../components';
+import { GalleryService, Image, Month } from '../../store';
 
 @Component({
     animations: [

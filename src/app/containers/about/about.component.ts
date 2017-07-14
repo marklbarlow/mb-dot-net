@@ -1,5 +1,6 @@
 import { trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+
 import * as animations from '../../animations';
 import { Technology } from './technology.interface';
 

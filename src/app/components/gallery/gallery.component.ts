@@ -1,5 +1,6 @@
 import { trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+
 import * as animations from '../../animations';
 import { ImageMonth } from '../../store';
 

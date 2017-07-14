@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Effect, Actions } from '@ngrx/effects';
+import { Actions, Effect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import * as gallery from '../store/actions/images';
 
 import { AngularFireService } from '../angularfire.service';
+import * as gallery from '../store/actions/images';
 
 @Injectable()
 export class GalleryEffects {

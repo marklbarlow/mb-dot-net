@@ -1,7 +1,8 @@
+import 'hammerjs';
+
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MaterialModule } from '@angular/material';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import 'hammerjs';
 
 import { AboutComponent } from './about.component';
 

@@ -1,3 +1,5 @@
+import 'hammerjs';
+
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
@@ -10,20 +12,18 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import 'hammerjs';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { environment } from '../environments/environment';
-import { routing } from './app.routing';
+import { AngularFireService } from './angularfire.service';
 import { AppComponent } from './app.component';
+import { routing } from './app.routing';
 import * as components from './components';
 import * as containers from './containers';
 import { GalleryEffects } from './effects/gallery.effects';
 import { ManageEffects } from './effects/manage.effects';
-
-import { reducer, GalleryService, OverlayService } from './store';
-import { AngularFireService } from './angularfire.service';
+import { GalleryService, OverlayService, reducer } from './store';
 
 @NgModule({
   bootstrap: [AppComponent],

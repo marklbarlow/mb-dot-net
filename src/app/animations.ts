@@ -1,9 +1,4 @@
-import {
-    style,
-    animate,
-    transition,
-    AnimationMetadata
-} from '@angular/animations';
+import { animate, AnimationMetadata, style, transition } from '@angular/animations';
 
 export function getEnterTransition(): AnimationMetadata {
     return transition(':enter', [

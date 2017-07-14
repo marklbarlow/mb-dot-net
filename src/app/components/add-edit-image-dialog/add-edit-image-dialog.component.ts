@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
-import { AngularFireService } from '../../angularfire.service';
+
 import { Image } from '../../store';
 
 declare const FileReader: any;

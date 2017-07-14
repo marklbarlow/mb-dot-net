@@ -1,12 +1,14 @@
+import 'rxjs/add/operator/mergeMap';
+
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import * as firebase from 'firebase';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/mergeMap';
-import { Image, ImageMonth, Month } from './store';
+
 import { environment } from '../environments/environment';
+import { Image, ImageMonth, Month } from './store';
 
 @Injectable()
 export class AngularFireService {

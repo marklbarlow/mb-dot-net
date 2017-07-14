@@ -1,15 +1,13 @@
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-import { MaterialModule } from '@angular/material';
 import 'hammerjs';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-import { Photo365Component } from './photo-365.component';
-import { GalleryService, ImageMonth, OverlayService } from '../../store';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MaterialModule } from '@angular/material';
+
 import { MbGalleryStubComponent, MbImageOverlayComponent, ReversePipeStub } from '../../../testing';
+import { GalleryService, OverlayService } from '../../store';
+import { Photo365Component } from './photo-365.component';
 
+/* tslint:disable:no-unused-variable */
 describe('Photo365Component', () => {
   let component: Photo365Component;
   let fixture: ComponentFixture<Photo365Component>;
