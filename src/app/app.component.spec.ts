@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { async, TestBed } from '@angular/core/testing';
+import { MdToolbarStubComponent, RouterOutletStubComponent } from 'testing';
 
-import { MdToolbarStubComponent, RouterOutletStubComponent } from '../testing';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared.module';
 

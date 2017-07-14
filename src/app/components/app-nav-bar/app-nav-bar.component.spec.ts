@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 
-import { RouterLinkStubDirective } from '../../../testing';
+import { RouterLinkStubDirective } from 'testing';
 import { AppNavBarComponent } from './app-nav-bar.component';
 import { AngularFireService } from '../../angularfire.service';
 

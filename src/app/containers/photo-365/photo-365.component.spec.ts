@@ -2,8 +2,8 @@ import 'hammerjs';
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MaterialModule } from '@angular/material';
+import { MbGalleryStubComponent, MbImageOverlayComponent, ReversePipeStub } from 'testing';
 
-import { MbGalleryStubComponent, MbImageOverlayComponent, ReversePipeStub } from '../../../testing';
 import { GalleryService, OverlayService } from '../../store';
 import { Photo365Component } from './photo-365.component';
 
