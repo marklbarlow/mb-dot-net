@@ -56,6 +56,5 @@ export class ManageEffects {
                 .map(() => new gallery.DeleteImageSuccessAction());
         });
 
-    constructor(private actions$: Actions, private afs: AngularFireService) {
-    }
+    constructor(private actions$: Actions, private afs: AngularFireService) { }
 }

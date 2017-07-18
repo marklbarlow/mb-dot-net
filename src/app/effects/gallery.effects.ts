@@ -22,6 +22,5 @@ export class GalleryEffects {
                 .catch(error => Observable.of(new gallery.LoadFailAction(error)));
         });
 
-    constructor(private actions$: Actions, private afs: AngularFireService) {
-    }
+    constructor(private actions$: Actions, private afs: AngularFireService) { }
 }

@@ -19,8 +19,7 @@ export class OverlayNextAction implements Action {
 export class OverlayOpenAction implements Action {
     readonly type = ActionTypes.OVERLAY_OPEN;
 
-    constructor(public payload: { imageMonth: ImageMonth, index: number }) {
-    }
+    constructor(public payload: { imageMonth: ImageMonth, index: number }) { }
 }
 
 export class OverlayPreviousAction implements Action {

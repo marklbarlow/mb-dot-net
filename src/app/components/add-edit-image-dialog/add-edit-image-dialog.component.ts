@@ -24,8 +24,7 @@ export class AddEditImageDialogComponent {
 
     constructor(
         private dialogRef: MdDialogRef<AddEditImageDialogComponent>,
-        private changeDetectorRef: ChangeDetectorRef) {
-    }
+        private changeDetectorRef: ChangeDetectorRef) { }
 
     public fileChange(input) {
         this.readFiles(input.files);

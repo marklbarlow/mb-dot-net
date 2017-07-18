@@ -14,15 +14,13 @@ export class LoadAction implements Action {
 export class LoadFailAction implements Action {
     readonly type = ActionTypes.LOAD_FAIL;
 
-    constructor(public payload: string) {
-    }
+    constructor(public payload: string) { }
 }
 
 export class LoadSuccessAction implements Action {
     readonly type = ActionTypes.LOAD_SUCCESS;
 
-    constructor(public payload: ImageMonth[]) {
-    }
+    constructor(public payload: ImageMonth[]) { }
 }
 
 export type Actions

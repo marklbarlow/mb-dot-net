@@ -12,8 +12,7 @@ export class AddEditMonthDialogComponent {
 
     public days: number[] = [28, 29, 30, 31];
 
-    constructor(private dialogRef: MdDialogRef<AddEditMonthDialogComponent>) {
-    }
+    constructor(private dialogRef: MdDialogRef<AddEditMonthDialogComponent>) { }
 
     public onSave(): void {
         this.dialogRef.close(true);

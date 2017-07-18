@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -23,7 +24,7 @@ import * as components from './components';
 import * as containers from './containers';
 import { GalleryEffects } from './effects/gallery.effects';
 import { ManageEffects } from './effects/manage.effects';
-import { GalleryService, OverlayService, reducer } from './store';
+import { GalleryService, OverlayService, reducers } from './store';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -57,9 +58,12 @@ import { GalleryService, OverlayService, reducer } from './store';
     MaterialModule,
     NgxDatatableModule,
     RouterModule.forRoot(routing),
-    StoreModule.provideStore(reducer),
-    EffectsModule.run(GalleryEffects),
-    EffectsModule.run(ManageEffects),
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([
+      GalleryEffects,
+      ManageEffects
+    ]),
+    !environment.production ? StoreDevtoolsModule.instrument({ maxAge: 50 }) : [],
   ],
   providers: [
     AngularFireService,

@@ -12,8 +12,7 @@ export class Photo365Component {
 
     constructor(
         public galleryService: GalleryService,
-        public overlayService: OverlayService) {
-    }
+        public overlayService: OverlayService) { }
 
     public onImageSelected(imageMonth: ImageMonth, selectedIndex: number): void {
         this.overlayService.open(imageMonth, selectedIndex);

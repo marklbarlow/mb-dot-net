@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 import { Image, Month } from '../model';
 
-export const ActionTypes  = new class {
+export const ActionTypes = new class {
     readonly ADD_IMAGE = '[Images] Add Image';
     readonly EDIT_IMAGE = '[Images] Edit Image';
     readonly SAVE_IMAGE = '[Images] Save Image';
@@ -24,8 +24,7 @@ export const ActionTypes  = new class {
 export class SelectMonthAction implements Action {
     readonly type = ActionTypes.SELECT_MONTH;
 
-    constructor(public payload: Month) {
-    }
+    constructor(public payload: Month) { }
 }
 
 export class AddImageAction implements Action {
@@ -35,36 +34,31 @@ export class AddImageAction implements Action {
 export class EditImageAction implements Action {
     readonly type = ActionTypes.EDIT_IMAGE;
 
-    constructor(public payload: Image) {
-    }
+    constructor(public payload: Image) { }
 }
 
 export class SaveImageAction implements Action {
     readonly type = ActionTypes.SAVE_IMAGE;
 
-    constructor(public payload: { month: Month, image: Image, fullImage: any, thumbnailImage: any }) {
-    }
+    constructor(public payload: { month: Month, image: Image, fullImage: any, thumbnailImage: any }) { }
 }
 
 export class SaveImageSuccessAction implements Action {
     readonly type = ActionTypes.SAVE_IMAGE_SUCCESS;
 
-    constructor(public payload: Image) {
-    }
+    constructor(public payload: Image) { }
 }
 
 export class SaveImageFailAction implements Action {
     readonly type = ActionTypes.SAVE_IMAGE_FAIL;
 
-    constructor(public payload: string) {
-    }
+    constructor(public payload: string) { }
 }
 
 export class AddMonthAction implements Action {
     readonly type = ActionTypes.ADD_MONTH;
 
-    constructor(public payload: { month: string, numberOfDays: number }) {
-    }
+    constructor(public payload: { month: string, numberOfDays: number }) { }
 }
 
 export class AddMonthSuccessAction implements Action {
@@ -74,15 +68,13 @@ export class AddMonthSuccessAction implements Action {
 export class AddMonthFailAction implements Action {
     readonly type = ActionTypes.ADD_MONTH_FAIL;
 
-    constructor(public payload: string) {
-    }
+    constructor(public payload: string) { }
 }
 
 export class DeleteMonthAction implements Action {
     readonly type = ActionTypes.DELETE_MONTH;
 
-    constructor(public payload: Month) {
-    }
+    constructor(public payload: Month) { }
 }
 
 export class DeleteMonthSuccessAction implements Action {
@@ -96,8 +88,7 @@ export class DeleteMonthFailAction implements Action {
 export class DeleteImageAction implements Action {
     readonly type = ActionTypes.DELETE_IMAGE;
 
-    constructor(public payload: { month: Month, image: Image }) {
-    }
+    constructor(public payload: { month: Month, image: Image }) { }
 }
 
 export class DeleteImageSuccessAction implements Action {
@@ -115,8 +106,7 @@ export class LoadMonthListAction implements Action {
 export class LoadMonthListSuccessAction implements Action {
     readonly type = ActionTypes.LOAD_MONTH_LIST_SUCCESS;
 
-    constructor(public payload: Month[]) {
-    }
+    constructor(public payload: Month[]) { }
 }
 
 export type Actions

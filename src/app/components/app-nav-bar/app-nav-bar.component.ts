@@ -10,6 +10,5 @@ import { AngularFireService } from '../../angularfire.service';
 })
 export class AppNavBarComponent {
 
-  constructor(public af: AngularFireService) {
-  }
+  constructor(public af: AngularFireService) { }
 }
