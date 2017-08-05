@@ -23,8 +23,8 @@ export class ManageEffects {
 
     @Effect()
     addMonth$: Observable<Action> = this.actions$
-        .ofType(gallery.ActionTypes.ADD_MONTH)
-        .map((action: gallery.AddMonthAction) => {
+        .ofType<gallery.AddMonthAction>(gallery.ActionTypes.ADD_MONTH)
+        .map(action => {
             this.afs.addMonth(action.payload.month, action.payload.numberOfDays);
 
             return new gallery.AddMonthSuccessAction();
@@ -32,26 +32,24 @@ export class ManageEffects {
 
     @Effect()
     deleteMonth$: Observable<Action> = this.actions$
-        .ofType(gallery.ActionTypes.DELETE_MONTH)
-        .switchMap((action: gallery.DeleteMonthAction) => {
-
+        .ofType<gallery.DeleteMonthAction>(gallery.ActionTypes.DELETE_MONTH)
+        .switchMap(action => {
             return this.afs.deleteMonth(action.payload)
                 .map(() => new gallery.DeleteMonthSuccessAction());
         });
 
     @Effect()
     saveImage$: Observable<Action> = this.actions$
-        .ofType(gallery.ActionTypes.SAVE_IMAGE)
-        .switchMap((action: gallery.SaveImageAction) => {
-
+        .ofType<gallery.SaveImageAction>(gallery.ActionTypes.SAVE_IMAGE)
+        .switchMap(action => {
             return this.afs.saveImage(action.payload.month, action.payload.image, action.payload.fullImage, action.payload.thumbnailImage)
                 .map(() => new gallery.SaveImageSuccessAction(undefined));
         });
 
     @Effect()
     deleteImage$: Observable<Action> = this.actions$
-        .ofType(gallery.ActionTypes.DELETE_IMAGE)
-        .switchMap((action: gallery.DeleteImageAction) => {
+        .ofType<gallery.DeleteImageAction>(gallery.ActionTypes.DELETE_IMAGE)
+        .switchMap(action => {
             return this.afs.deleteImage(action.payload.month, action.payload.image)
                 .map(() => new gallery.DeleteImageSuccessAction());
         });
