@@ -26,7 +26,7 @@ export class AngularFireService {
         private db: AngularFireDatabase,
         private afAuth: AngularFireAuth,
         private router: Router) {
-        firebase.initializeApp(environment.firebase, 'mb-dot-net');
+
         this.storage = firebase.storage().ref();
     }
 
