@@ -1,6 +1,5 @@
-import { ActionReducer, combineReducers } from '@ngrx/store';
+import { ActionReducer, combineReducers, createSelector } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
-import { createSelector } from 'reselect';
 import { environment } from '../../../environments/environment';
 import * as fromImages from './images.reducer';
 import * as fromManage from './manage.reducer';
