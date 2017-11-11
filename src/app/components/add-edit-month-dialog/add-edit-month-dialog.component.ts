@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -12,7 +12,7 @@ export class AddEditMonthDialogComponent {
 
     public days: number[] = [28, 29, 30, 31];
 
-    constructor(private dialogRef: MdDialogRef<AddEditMonthDialogComponent>) { }
+    constructor(private dialogRef: MatDialogRef<AddEditMonthDialogComponent>) { }
 
     public onSave(): void {
         this.dialogRef.close(true);

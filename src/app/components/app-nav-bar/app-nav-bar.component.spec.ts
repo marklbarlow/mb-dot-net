@@ -1,10 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatToolbarStubComponent } from 'testing';
 import { RouterLinkStubDirective } from 'testing';
-import { AppNavBarComponent } from './app-nav-bar.component';
+
 import { AngularFireService } from '../../angularfire.service';
+import { AppNavBarComponent } from './app-nav-bar.component';
 
 describe('AppNavBarComponent', () => {
   let component: AppNavBarComponent;
@@ -20,9 +21,9 @@ describe('AppNavBarComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppNavBarComponent,
+        MatToolbarStubComponent,
         RouterLinkStubDirective,
       ],
-      imports: [MaterialModule],
       providers: [
         { provide: AngularFireService, useValue: afServiceStub },
       ]

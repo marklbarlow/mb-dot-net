@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MaterialModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -24,6 +23,7 @@ import * as components from './components';
 import * as containers from './containers';
 import { GalleryEffects } from './effects/gallery.effects';
 import { ManageEffects } from './effects/manage.effects';
+import { SharedModule } from './shared.module';
 import { GalleryService, OverlayService, reducers } from './store';
 
 @NgModule({
@@ -55,7 +55,7 @@ import { GalleryService, OverlayService, reducers } from './store';
     FlexLayoutModule,
     FormsModule,
     HttpModule,
-    MaterialModule,
+    SharedModule,
     NgxDatatableModule,
     RouterModule.forRoot(routing),
     StoreModule.forRoot(reducers),

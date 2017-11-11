@@ -1,6 +1,6 @@
 import { trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 import * as animations from '../../animations';
 import { AddEditImageDialogComponent, AddEditMonthDialogComponent } from '../../components';
@@ -24,7 +24,7 @@ export class ManageGalleryComponent {
 
     constructor(
         public galleryService: GalleryService,
-        public dialog: MdDialog) {
+        public dialog: MatDialog) {
         galleryService.selectedMonth$.filter(x => x !== undefined).subscribe(month => this.selectedMonth = month);
         galleryService.imagesForSelectedMonth$.subscribe(x => this.setUsedDays(x));
     }

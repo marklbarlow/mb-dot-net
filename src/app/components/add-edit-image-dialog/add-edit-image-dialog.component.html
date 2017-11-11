@@ -1,31 +1,31 @@
 <h2>Add / Edit Image</h2>
-<md-dialog-content [style.height]="'240px'">
+<mat-dialog-content [style.height]="'240px'">
     <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px">
         <form>
             <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="10px">
-                <md-select name="day" placeholder="Day of Month" floatPlaceholder="never" required [(ngModel)]="dayOfMonth">
-                    <md-option *ngFor="let day of days" [value]="day">
-                        {{ day | dayOfMonth }}
-                    </md-option>
-                </md-select>
-                <md-input-container floatPlaceholder="auto">
-                    <input mdInput placeholder="Prompt" required [(ngModel)]="prompt" name="prompt">
-                </md-input-container>
-                <md-checkbox [(ngModel)]="hidden" name="hidden">Hidden</md-checkbox>
+                <mat-form-field>
+                    <mat-select name="day" placeholder="Day of Month" floatPlaceholder="never" required [(ngModel)]="dayOfMonth">
+                        <mat-option *ngFor="let day of days" [value]="day">
+                            {{ day | dayOfMonth }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field floatPlaceholder="auto">
+                    <input matInput placeholder="Prompt" required [(ngModel)]="prompt" name="prompt">
+                </mat-form-field>
+                <mat-checkbox [(ngModel)]="hidden" name="hidden">Hidden</mat-checkbox>
             </div>
         </form>
 
         <div>
             <input type="file" multiple (change)="fileChange(input)" #input />
-            <md-card *ngIf="fullImage">
-                <img md-card-image [attr.src]="fullImage" />
-            </md-card>
+            <mat-card *ngIf="fullImage">
+                <img mat-card-image [attr.src]="fullImage" />
+            </mat-card>
         </div>
     </div>
-</md-dialog-content>
-<md-dialog-actions [attr.align]="'end'">
-    <div>
-        <button md-button md-dialog-close>CANCEL</button>
-        <button md-button (click)="onSave()" color="primary">SAVE</button>
-    </div>
-</md-dialog-actions>
+</mat-dialog-content>
+<mat-dialog-actions [attr.align]="'end'">
+    <button mat-button mat-dialog-close>CANCEL</button>
+    <button mat-button (click)="onSave()" color="primary">SAVE</button>
+</mat-dialog-actions>

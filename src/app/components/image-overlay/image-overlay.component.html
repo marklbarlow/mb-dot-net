@@ -1,15 +1,17 @@
 <div class="overlay">
     <div class="overlay-content">
-        <md-progress-spinner mode="indeterminate" *ngIf="loading" class="loading"></md-progress-spinner>
+        <div fxLayoutAlign="center center" class="loading" *ngIf="loading">
+            <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+        </div>
         <a class="close-popup" (click)="onClose()">
-            <md-icon>close</md-icon>
+            <mat-icon>close</mat-icon>
         </a>
         <a class="nav-left" *ngIf="hasPrevious" (click)="prevImage()">
-            <md-icon>keyboard_arrow_left</md-icon>
+            <mat-icon>keyboard_arrow_left</mat-icon>
         </a>
         <img [class.hidden-image]="loading" [src]="imageUrl" (click)="nextImage()" class="effect" (load)="onLoadComplete()" />
         <a class="nav-right" *ngIf="hasNext" (click)="nextImage()">
-            <md-icon>keyboard_arrow_right</md-icon>
+            <mat-icon>keyboard_arrow_right</mat-icon>
         </a>
         <span class="info-text">{{ imageText }}</span>
     </div>

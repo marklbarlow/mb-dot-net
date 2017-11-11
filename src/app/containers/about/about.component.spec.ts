@@ -1,8 +1,8 @@
 import 'hammerjs';
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MaterialModule } from '@angular/material';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDividerStubComponent, MatIconStubComponent, MatListItemStubComponent, MatListStubComponent } from 'testing';
 
 import { AboutComponent } from './about.component';
 
@@ -12,9 +12,15 @@ describe('AboutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AboutComponent],
+      declarations: [
+        AboutComponent,
+
+        MatDividerStubComponent,
+        MatIconStubComponent,
+        MatListStubComponent,
+        MatListItemStubComponent,
+      ],
       imports: [
-        MaterialModule,
         NoopAnimationsModule
       ]
     })

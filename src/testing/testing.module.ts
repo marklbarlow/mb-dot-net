@@ -6,7 +6,11 @@ import * as root from './';
     declarations: [
         root.MbImageOverlayComponent,
         root.MbGalleryStubComponent,
-        root.MdToolbarStubComponent,
+        root.MatDividerStubComponent,
+        root.MatIconStubComponent,
+        root.MatListStubComponent,
+        root.MatListItemStubComponent,
+        root.MatToolbarStubComponent,
         root.ReversePipeStub,
         root.RouterLinkStubDirective,
         root.RouterOutletStubComponent,

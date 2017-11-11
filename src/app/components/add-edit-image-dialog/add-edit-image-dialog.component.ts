@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, Input } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 
 import { Image } from '../../store';
 
@@ -23,7 +23,7 @@ export class AddEditImageDialogComponent {
     public thumbnailImage: any;
 
     constructor(
-        private dialogRef: MdDialogRef<AddEditImageDialogComponent>,
+        private dialogRef: MatDialogRef<AddEditImageDialogComponent>,
         private changeDetectorRef: ChangeDetectorRef) { }
 
     public fileChange(input) {

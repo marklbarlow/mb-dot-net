@@ -4,15 +4,17 @@
   <div fxLayout="column" fxLayoutGap="10px">
     <form>
       <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-        <md-select name="month" [ngModel]="(galleryService.selectedMonth$ | async)?.name">
-          <md-option *ngFor="let month of galleryService.months$ | async" [value]="month.name" (click)="onMonthSelected(month)">
-            {{month.name}}
-          </md-option>
-        </md-select>
-        <button md-button (click)="onMonthAdded()" color="primary">ADD MONTH</button>
-        <button md-button (click)="onMonthEdited()" color="primary" [disabled]="!(galleryService.selectedMonth$ | async)">EDIT MONTH</button>
-        <button md-button (click)="onMonthDeleted()" color="primary" [disabled]="!(galleryService.selectedMonth$ | async)">DELETE MONTH</button>
-        <button md-button (click)="onImageAdded()" color="primary" [disabled]="!(galleryService.selectedMonth$ | async)">ADD IMAGE</button>
+        <mat-form-field>
+          <mat-select name="month" [ngModel]="(galleryService.selectedMonth$ | async)?.name">
+            <mat-option *ngFor="let month of galleryService.months$ | async" [value]="month.name" (click)="onMonthSelected(month)">
+              {{month.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-button (click)="onMonthAdded()" color="primary">ADD MONTH</button>
+        <button mat-button (click)="onMonthEdited()" color="primary" [disabled]="!(galleryService.selectedMonth$ | async)">EDIT MONTH</button>
+        <button mat-button (click)="onMonthDeleted()" color="primary" [disabled]="!(galleryService.selectedMonth$ | async)">DELETE MONTH</button>
+        <button mat-button (click)="onImageAdded()" color="primary" [disabled]="!(galleryService.selectedMonth$ | async)">ADD IMAGE</button>
       </div>
     </form>
 
@@ -30,7 +32,7 @@
       </ngx-datatable-column>
       <ngx-datatable-column name="Visible" width='80'>
         <ng-template let-value="row" ngx-datatable-cell-template>
-          <md-icon [style.color]="value.hidden ? 'red' : 'green'">{{ value.hidden ? 'close' : 'done' }}</md-icon>
+          <mat-icon [style.color]="value.hidden ? 'red' : 'green'">{{ value.hidden ? 'close' : 'done' }}</mat-icon>
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="Prompt" width="150">
@@ -40,12 +42,16 @@
       </ngx-datatable-column>
       <ngx-datatable-column name="" width='100'>
         <ng-template let-value="row" ngx-datatable-cell-template>
-          <button md-icon-button (click)="onEditImage(value)"><md-icon class="action-button">mode_edit</md-icon></button>
+          <button mat-icon-button (click)="onEditImage(value)">
+            <mat-icon class="action-button">mode_edit</mat-icon>
+          </button>
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="" width='100'>
         <ng-template let-value="row" ngx-datatable-cell-template>
-          <button md-icon-button (click)="onDeleteImage(value)"><md-icon class="action-button">delete</md-icon></button>
+          <button mat-icon-button (click)="onDeleteImage(value)">
+            <mat-icon class="action-button">delete</mat-icon>
+          </button>
         </ng-template>
       </ngx-datatable-column>
     </ngx-datatable>

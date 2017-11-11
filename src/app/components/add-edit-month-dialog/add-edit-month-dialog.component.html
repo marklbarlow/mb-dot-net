@@ -1,21 +1,21 @@
 <h2>Add / Edit Month</h2>
-<md-dialog-content [style.height]="'240px'">
+<mat-dialog-content [style.height]="'240px'">
     <form>
         <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
-            <md-input-container floatPlaceholder="auto">
-                <input mdInput placeholder="Name" required [(ngModel)]="month" name="name">
-            </md-input-container>
-            <md-select name="day" placeholder="Number of days" floatPlaceholder="never" required [(ngModel)]="numberOfDays">
-                <md-option *ngFor="let day of days" [value]="day">
-                    {{ day }}
-                </md-option>
-            </md-select>
+            <mat-form-field floatPlaceholder="auto">
+                <input matInput placeholder="Name" required [(ngModel)]="month" name="name">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select name="day" placeholder="Number of days" floatPlaceholder="never" required [(ngModel)]="numberOfDays">
+                    <mat-option *ngFor="let day of days" [value]="day">
+                        {{ day }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
         </div>
     </form>
-</md-dialog-content>
-<md-dialog-actions [attr.align]="'end'">
-    <div>
-        <button md-button md-dialog-close>CANCEL</button>
-        <button md-button (click)="onSave()" color="primary">SAVE</button>
-    </div>
-</md-dialog-actions>
+</mat-dialog-content>
+<mat-dialog-actions [attr.align]="'end'">
+    <button mat-button mat-dialog-close>CANCEL</button>
+    <button mat-button (click)="onSave()" color="primary">SAVE</button>
+</mat-dialog-actions>

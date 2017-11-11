@@ -1,11 +1,11 @@
-<md-toolbar color="primary" class="mat-elevation-z6">
+<mat-toolbar color="primary" class="mat-elevation-z4">
   <span>MB.net</span>
   <span class="navbar-spacer"></span>
   <nav>
-    <a md-button routerLink="/photo365" routerLinkActive="active">PHOTO 365</a>
-    <a md-button routerLink="/about" routerLinkActive="active">ABOUT</a>
-    <a md-button routerLink="/manage" routerLinkActive="active" *ngIf="(af.auth() | async)">MANAGE</a>
-    <button md-raised-button (click)="af.login()" color="accent" *ngIf="!(af.auth() | async)">LOGIN</button>
-    <button md-raised-button (click)="af.logout()" color="accent" *ngIf="(af.auth() | async)">LOGOUT</button>
+    <a mat-button routerLink="/photo365" routerLinkActive="active">PHOTO 365</a>
+    <a mat-button routerLink="/about" routerLinkActive="active">ABOUT</a>
+    <a mat-button routerLink="/manage" routerLinkActive="active" *ngIf="(af.auth() | async)">MANAGE</a>
+    <button mat-raised-button (click)="af.login()" color="accent" *ngIf="!(af.auth() | async)">LOGIN</button>
+    <button mat-raised-button (click)="af.logout()" color="accent" *ngIf="(af.auth() | async)">LOGOUT</button>
   </nav>
-</md-toolbar>
+</mat-toolbar>
